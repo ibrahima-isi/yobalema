@@ -17,11 +17,14 @@ class DatabaseSeeder extends Seeder
 
 
         \App\Models\User::factory()->create([
-            'name' => 'admin',
+            'nom' => 'admin',
+            'prenom' => 'admin',
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
             'password' => Hash::make('passer123'),
             'remember_token' => Str::random(10),
+            'telephone' => "77 990 00 00",
+            'adresse' => 'Dakar'
         ]);
 
         \App\Models\User::factory(20)->create();
