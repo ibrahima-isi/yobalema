@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Chauffeur;
-use App\Models\Payement;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,12 +15,19 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+
             $table->dateTime('heure_depart');
+
             $table->dateTime('heure_arrivee');
+
             $table->date('date_location');
+
             $table->string('lieu_depart');
+
             $table->string('lieu_destination');
+
             $table->integer('prix_estime');
+
             $table->foreignIdFor(Chauffeur::class)
                 ->constrained()
                 ->cascadeOnUpdate()

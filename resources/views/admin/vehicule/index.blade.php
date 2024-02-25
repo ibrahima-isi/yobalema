@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Role User') }}
+            {{ __('Véhicules') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="card col-md-8 m-auto">
             <div class="card-header">
-                <a href="{{ route("admin.role.create") }}" class="btn btn-primary"> Ajouter</a>
+                <a href="{{ route("admin.vehicule.create") }}" class="btn btn-primary"> Ajouter</a>
             </div>
         <table class="table table-striped">
             <thead class="table-header-group">
@@ -22,8 +22,8 @@
                     <tr>
                         <td>{{ $role->name }}</td>
                         <td>
-                            <a href="{{ route("admin.role.edit", $role) }}" class="btn btn-primary">Modifier</a>
-                            <form action="{{ route("admin.role.destroy", $role) }}" method="post"
+                            <a href="{{ route("admin.vehicule.edit", $role) }}" class="btn btn-primary">Modifier</a>
+                            <form action="{{ route("admin.vehicule.destroy", $role) }}" method="post"
                                   class="needs-validation d-inline" novalidate>
                                 @csrf
                                 @method("DELETE")
