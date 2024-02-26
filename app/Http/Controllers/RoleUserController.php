@@ -59,6 +59,7 @@ class RoleUserController extends Controller
     public function destroy(RoleUser $role)
     {
         $role -> delete();
+
         return redirect()
             -> back()
             -> with('success', "Suppression effectuer avec succès");

@@ -46,4 +46,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function role_user()
+    {
+        return $this->belongsTo(RoleUser::class);
+    }
+
+    public function locations() {
+        return $this->hasMany(Location::class);
+    }
+
+
 }

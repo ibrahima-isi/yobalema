@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChauffeurFormRequest;
 use App\Models\Chauffeur;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class ChauffeurController extends Controller
      */
     public function index()
     {
-        //
+        $chauffeur = Chauffeur::with('vehicule')
+            ->paginate(20);
+        return view('admin.chauffeur.index',
+            compact('chauffeur'));
     }
 
     /**
@@ -20,15 +24,20 @@ class ChauffeurController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.chauffeur.form',
+            ['chauffeur' => new Chauffeur()]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ChauffeurFormRequest $request)
     {
-        //
+        Chauffeur::create($request->validated());
+
+        return to_route('admin.chauffeur.index')
+            -> with('success', 'Role modifié avec succès');
     }
 
     /**
@@ -36,7 +45,7 @@ class ChauffeurController extends Controller
      */
     public function show(Chauffeur $chauffeur)
     {
-        //
+        return view('admin.chauffeur.show', ['chauffeur' => new Chauffeur()]);
     }
 
     /**
@@ -44,15 +53,20 @@ class ChauffeurController extends Controller
      */
     public function edit(Chauffeur $chauffeur)
     {
-        //
+        return view('admin.chauffeur.form',
+            compact('chauffeur'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chauffeur $chauffeur)
+    public function update(ChauffeurFormRequest $request, Chauffeur $chauffeur)
     {
-        //
+        $chauffeur->update($request->validated());
+
+        return to_route('admin.chauffeur.index')
+            -> with('success', 'Role modifié avec succès');
     }
 
     /**
@@ -60,6 +74,10 @@ class ChauffeurController extends Controller
      */
     public function destroy(Chauffeur $chauffeur)
     {
-        //
+        $chauffeur->delete();
+
+        return redirect()
+            -> back()
+            -> with('success', 'Véhicule supprimer');
     }
 }

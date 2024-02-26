@@ -34,6 +34,8 @@ Route::prefix('admin') -> name("admin.")
     -> group( function () {
 
         Route::resource('role', RoleUserController::class);
+        Route::resource('vehicule', RoleUserController::class);
+        Route::resource('user', RoleUserController::class);
 
 });
 
