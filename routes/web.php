@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ChauffeurController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleUserController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +37,8 @@ Route::prefix('admin') -> name("admin.")
 
         Route::resource('role', RoleUserController::class);
         Route::resource('vehicule', RoleUserController::class);
-        Route::resource('user', RoleUserController::class);
+        Route::resource('user', UserController::class);
+        Route::resource('chauffeur', ChauffeurController::class);
 
 });
 

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('vehicules', function (Blueprint $table) {
             $table->id();
             $table->string("matricule")->unique();
+            $table->string('image_vehicule');
             $table->date("date_achat");
             $table->integer("km_defaut");
             $table->integer("km_actuel");

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Fromulaire des roles') }}
+            {{ __('Fromulaire des payement') }}
         </h2>
     </x-slot>
 
@@ -9,11 +9,11 @@
         <div class="card col-md-8">
             <div class="card-body">
                 <form method="post" class="needs-validation vstack gap-2"
-                      action="{{ route($role->exists ? 'admin.role.update' : 'admin.role.store', $role) }}"
+                      action="{{ route($payment->exists ? 'admin.payement.update' : 'admin.payement.store', $role) }}"
                       novalidate
                 >
                     @csrf
-                    @method($role->exists ? "PUT" : "POST")
+                    @method($payement->exists ? "PUT" : "POST")
 
                     @include('shared.input', ['label' => "Nom", 'name' => "name", 'value' => $role->name])
 

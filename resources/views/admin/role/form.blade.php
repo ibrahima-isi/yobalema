@@ -1,9 +1,8 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Fromulaire des roles') }}
-        </h2>
-    </x-slot>
+@extends('layouts.admin.base')
+
+@section('title', 'Formulaire Des Roles')
+
+@section('content')
 
     <div class="container mt-5">
         <div class="card col-md-8">
@@ -29,4 +28,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

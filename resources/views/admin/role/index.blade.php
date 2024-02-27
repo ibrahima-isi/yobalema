@@ -1,9 +1,8 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Role User') }}
-        </h2>
-    </x-slot>
+@extends('layouts.admin.base')
+
+@section('title', 'Liste Des Roles')
+
+@section('content')
 
     <div class="py-12">
         <div class="card col-md-8 m-auto">
@@ -35,6 +34,6 @@
             </tbody>
         </table>
         </div>
-
     </div>
-</x-app-layout>
+
+@endsection

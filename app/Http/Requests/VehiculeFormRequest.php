@@ -27,6 +27,7 @@ class VehiculeFormRequest extends FormRequest
             'date_achat' => ['date', 'required'],
             'km_defaut' => ['integer', 'required'],
             'statut' => ['required', 'string'],
+            'image_vehicule' => ['required', 'string', 'extensions:.jpg,.png,.jpeg'],
             'categorie' => ['required', 'string']
         ];
     }

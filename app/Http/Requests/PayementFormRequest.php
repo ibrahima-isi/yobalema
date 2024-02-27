@@ -11,7 +11,7 @@ class PayementFormRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class PayementFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'mode' => ['required', 'string'],
+            'laoction_id' => ['required', 'integer'],
+            'montant' => ['required', 'integer'],
+            'date_paiement' => ['required', 'date'],
         ];
     }
 }

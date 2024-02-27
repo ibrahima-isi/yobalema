@@ -28,6 +28,7 @@ return new class extends Migration
             $table->date('date_expiration');
             $table->integer('annee_experience');
             $table->boolean('is_permis_valide');
+            $table->string('image');
             $table->foreignIdFor(Vehicule::class)
                 ->nullable()
                 ->constrained()
