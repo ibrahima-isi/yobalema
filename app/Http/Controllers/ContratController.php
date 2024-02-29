@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContratFormRequest;
 use App\Models\Contrat;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class ContratController extends Controller
      */
     public function index()
     {
-        //
+        $contrats = Contrat::with('chauffeur')->get();
+        return view('admin.contrats.index', [
+            'contrats' => $contrats,
+        ]);
     }
 
     /**
@@ -20,15 +24,20 @@ class ContratController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.contrats.form', [
+            'contrat' => new Contrat(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContratFormRequest $request)
     {
-        //
+        Contrat::create($request->validated());
+        return to_route('admin.contrat.index')
+            ->with('succes', 'Contrat Créé avec succés');
     }
 
     /**
@@ -36,7 +45,9 @@ class ContratController extends Controller
      */
     public function show(Contrat $contrat)
     {
-        //
+        return view('admin.contrats.show', [
+            'contrat' => $contrat,
+        ]);
     }
 
     /**
@@ -44,15 +55,19 @@ class ContratController extends Controller
      */
     public function edit(Contrat $contrat)
     {
-        //
+        return view('admin.contrats.form',
+        compact('contrat')
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contrat $contrat)
+    public function update(ContratFormRequest $request, Contrat $contrat)
     {
-        //
+        $contrat->update($request->validated());
+        return to_route('admin.contrat.index')
+            ->with('success', "Contrat mis a jour");
     }
 
     /**
@@ -60,6 +75,7 @@ class ContratController extends Controller
      */
     public function destroy(Contrat $contrat)
     {
-        //
+        $contrat->delete();
+        return redirect()->back()->with('success', "Contrat supprimé");
     }
 }
