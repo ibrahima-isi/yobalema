@@ -39,8 +39,9 @@ Route::prefix('admin') -> name("admin.")
         Route::resource('vehicule', RoleUserController::class);
         Route::resource('user', UserController::class);
         Route::resource('chauffeur', ChauffeurController::class);
-        Route::resource('client', UserController::class);
+        Route::resource('contrat', \App\Http\Controllers\ContratController::class);
+        Route::resource('location', \App\Http\Controllers\LocationController::class);
+});
 
-    });
 
 require __DIR__.'/auth.php';
