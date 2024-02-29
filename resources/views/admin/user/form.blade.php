@@ -1,35 +1,63 @@
 @extends('layouts.admin.base')
 
-@section('title', 'Formulaire utilisateur')
+@section('title', 'Formulaire Des Véhicules')
 
 @section('content')
 
-    <h1>@yield('title')</h1>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>@yield('title')</h4>
+            </div>
+            <div class="card-body">
+                @if(Route::has(['admin.user.update', 'admin.user.store']))
+                    <form method="post" class="needs-validation vstack gap-2"
+                         action="{{ route(
+                                    $user->exists
+                                    ? 'admin.user.update'
+                                    : 'admin.user.store',
+                                    $user
+                                )
+                         }}"
+                        enctype="multipart/form-data" novalidate>
 
-    <div class="card">
-        <div class="card-header">
-            <div class="card-title">@yield('title')</div>
-        </div>
-        <div class="card-body">
-            <form class="needs-validation" novalidate action="" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
+                        @csrf
+                        @method($vehicule->exists ? "PUT" : "POST")
 
-                    @include('shared.input',['name' => 'nom', 'value' => $user->nom, 'required' => false,
-                        'class' => 'col-md-4' ])
+                        @includeUnless($vehicule->exists, 'shared.input',
+                            ['label' => 'Image', 'name' => 'image_vehicule', 'type' => 'file'])
 
-                    @include('shared.input',['name' => 'prenom', 'value' => $user->prenom, 'class' => 'col-md-4'])
-
-                </div>
+                        @include('shared.input', ['name' => "matricule", 'value' => $vehicule->matricule])
 
 
-                @include('shared.input', ['label' => 'Mot de passe', 'name' => 'password',
-                        'type' => 'password'])
+                        <div class="row">
+                            @include('shared.input', ['label' => 'Date Achat', 'name'=> 'date_achat',
+                                    'type' => 'date', 'value' => $vehicule->date_achat, 'class' => 'col-md-6'])
 
-            </form>
+
+                            @include('shared.input', ['label' => 'Km Défaut', 'name' => 'km_defaut', 'type' => 'number',
+                                    'value' => $vehicule->km_defaut, 'class' => 'col-md-6'])
+                        </div>
+
+                        <div class="row">
+                            @include('shared.select', ['name' => 'status', 'options' => $statuts,
+                                'value' => $vehicule->statut, 'class' => 'col-md-6'])
+
+                            @include('shared.select', ['name' => 'categorie', 'options' => $categories,
+                                'value' => $vehicule->categorie, 'class' => 'col-md-6'])
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            @if($vehicule->exists)
+                                Modifier
+                            @else
+                                Creer
+                            @endif
+                        </button>
+
+                    </form>
+                @endif
+            </div>
         </div>
     </div>
-
 @endsection
-
-

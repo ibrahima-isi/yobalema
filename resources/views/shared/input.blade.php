@@ -9,7 +9,7 @@
 
 @endphp
 
-<div @class(['form-group', $class])>
+<div @class(['form-group mb-3', $class])>
 
     <label class="form-label" for="{{ $name }}">
         {{ __($label) }}

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // let use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Vehicule;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        \App\Models\User::factory()->create([
+        User::factory()->create([
             'nom' => 'admin',
             'prenom' => 'admin',
             'email' => 'admin@example.com',
@@ -27,7 +29,9 @@ class DatabaseSeeder extends Seeder
             'adresse' => 'Dakar'
         ]);
 
-        \App\Models\User::factory(20)->create();
+        User::factory(20)->create();
+
+        Vehicule::factory(20)->create();
 
     }
 }

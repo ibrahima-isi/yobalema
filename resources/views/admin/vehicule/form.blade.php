@@ -1,32 +1,65 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Fromulaire des roles') }}
-        </h2>
-    </x-slot>
+@extends('layouts.admin.base')
+
+@section('title', 'Formulaire Des Véhicules')
+
+@section('content')
 
     <div class="container mt-5">
-        <div class="card col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4>@yield('title')</h4>
+            </div>
             <div class="card-body">
-                <form method="post" class="needs-validation vstack gap-2"
-                      action="{{ route($role->exists ? 'admin.role.update' : 'admin.role.store', $role) }}"
-                      novalidate
-                >
-                    @csrf
-                    @method($role->exists ? "PUT" : "POST")
+                @if(Route::has(['admin.vehicule.update', 'admin.vehicule.store']))
 
-                    @include('shared.input', ['label' => "Nom", 'name' => "name", 'value' => $role->name])
+                    <form
+                        method="post"
+                        class="needs-validation vstack gap-2"
+                        action="{{ route($vehicule->exists
+                                ? 'admin.vehicule.update'
+                                : 'admin.vehicuke.store',
+                                 $vehicule)
+                        }}"
+                        enctype="multipart/form-data" novalidate
+                    >
 
-                    <button type="submit" class="btn btn-primary">
-                        @if($role->exists)
-                            Modifier
-                        @else
-                            Creer
-                        @endif
-                    </button>
+                        @csrf
+                        @method($vehicule->exists ? "PUT" : "POST")
 
-                </form>
+                        @includeUnless($vehicule->exists, 'shared.input',
+                            ['label' => 'Image', 'name' => 'image_vehicule', 'type' => 'file'])
+
+                        @include('shared.input', ['name' => "matricule", 'value' => $vehicule->matricule])
+
+
+                        <div class="row">
+                            @include('shared.input', ['label' => 'Date Achat', 'name'=> 'date_achat',
+                                    'type' => 'date', 'value' => $vehicule->date_achat, 'class' => 'col-md-6'])
+
+
+                            @include('shared.input', ['label' => 'Km Défaut', 'name' => 'km_defaut', 'type' => 'number',
+                                    'value' => $vehicule->km_defaut, 'class' => 'col-md-6'])
+                        </div>
+
+                        <div class="row">
+                            @include('shared.select', ['name' => 'status', 'options' => $statuts,
+                                'value' => $vehicule->statut, 'class' => 'col-md-6'])
+
+                            @include('shared.select', ['name' => 'categorie', 'options' => $categories,
+                                'value' => $vehicule->categorie, 'class' => 'col-md-6'])
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            @if($vehicule->exists)
+                                Modifier
+                            @else
+                                Creer
+                            @endif
+                        </button>
+
+                    </form>
+                @endif
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

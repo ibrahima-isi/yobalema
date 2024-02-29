@@ -39,16 +39,16 @@
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.user.index') }}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-alert-circle"></i>
-                </span>
+                    <span>
+                      <i class="ti ti-user"></i>
+                    </span>
                         <span class="hide-menu">{{ __('Utilisateurs') }}</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.vehicule.index') }}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-cards"></i>
+                  <i class="ti ti-car"></i>
                 </span>
                         <span class="hide-menu">{{ __('Véhicules') }}</span>
                     </a>
@@ -56,7 +56,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.chauffeur.index') }}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file-description"></i>
+                  <i class="ti ti-user-circle"></i>
                 </span>
                         <span class="hide-menu">{{ __('Chauffeurs') }}</span>
                     </a>
@@ -64,7 +64,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.client.index') }}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-typography"></i>
+                  <i class="ti ti-user-check"></i>
                 </span>
                         <span class="hide-menu">{{ __('Clients') }}</span>
                     </a>

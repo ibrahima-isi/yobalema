@@ -36,11 +36,12 @@ Route::prefix('admin') -> name("admin.")
     -> group( function () {
 
         Route::resource('role', RoleUserController::class);
-        Route::resource('vehicule', RoleUserController::class);
+        Route::resource('vehicule', \App\Http\Controllers\VehiculeController::class);
         Route::resource('user', UserController::class);
         Route::resource('chauffeur', ChauffeurController::class);
         Route::resource('contrat', \App\Http\Controllers\ContratController::class);
         Route::resource('location', \App\Http\Controllers\LocationController::class);
+        Route::resource('client', UserController::class);
 });
 
 
