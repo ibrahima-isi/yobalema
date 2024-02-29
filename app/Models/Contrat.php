@@ -11,7 +11,7 @@ class Contrat extends Model
 
     protected $guarded = [];
 
-    public function contrat()
+    public function chauffeur()
     {
         return $this->belongsTo(Chauffeur::class);
     }
