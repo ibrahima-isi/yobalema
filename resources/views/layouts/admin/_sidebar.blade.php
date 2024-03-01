@@ -62,6 +62,24 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.contrat.index') }}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-invoice"></i>
+                </span>
+                        <span class="hide-menu">{{ __('Contrats') }}</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.location.index') }}" class="sidebar-link" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-car-crane"></i>
+                        </span>
+                        <span class="hide-menu">
+                            {{__('Locations')}}
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.client.index') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-user-check"></i>
