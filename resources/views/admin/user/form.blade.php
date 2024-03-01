@@ -1,6 +1,6 @@
 @extends('layouts.admin.base')
 
-@section('title', 'Formulaire Des Véhicules')
+@section('title', 'Formulaire Des Utilisateurs')
 
 @section('content')
 
@@ -19,36 +19,42 @@
                                     $user
                                 )
                          }}"
-                        enctype="multipart/form-data" novalidate>
+                        enctype="multipart/form-data" novalidate >
 
                         @csrf
-                        @method($vehicule->exists ? "PUT" : "POST")
-
-                        @includeUnless($vehicule->exists, 'shared.input',
-                            ['label' => 'Image', 'name' => 'image_vehicule', 'type' => 'file'])
-
-                        @include('shared.input', ['name' => "matricule", 'value' => $vehicule->matricule])
-
+                        @method($user->exists ? "PUT" : "POST")
 
                         <div class="row">
-                            @include('shared.input', ['label' => 'Date Achat', 'name'=> 'date_achat',
-                                    'type' => 'date', 'value' => $vehicule->date_achat, 'class' => 'col-md-6'])
 
+                            @include('shared.input', ['name' => "nom", 'value' => $user->nom, 'class' => 'col-md-6'])
 
-                            @include('shared.input', ['label' => 'Km Défaut', 'name' => 'km_defaut', 'type' => 'number',
-                                    'value' => $vehicule->km_defaut, 'class' => 'col-md-6'])
+                            @include('shared.input', ['label' => 'Prénom', 'name'=> 'prenom',
+                                    'value' => $user->prenom, 'class' => 'col-md-6'])
                         </div>
 
                         <div class="row">
-                            @include('shared.select', ['name' => 'status', 'options' => $statuts,
-                                'value' => $vehicule->statut, 'class' => 'col-md-6'])
+                            @include('shared.input', ['name' => 'password', 'type' => 'password',
+                                'label' => 'Mot de passe', 'class' => 'col-md-6'])
 
-                            @include('shared.select', ['name' => 'categorie', 'options' => $categories,
-                                'value' => $vehicule->categorie, 'class' => 'col-md-6'])
+                            @include('shared.input', ['name' => 'confirm_password', 'type' => 'password',
+                                'label' => 'Confirmer le mot de passe', 'class' => 'col-md-6'])
                         </div>
+
+                        @include('shared.input', ['name' => 'email', 'value' => $user->email, 'type' => 'email'])
+
+                        <div class="row">
+                            @include('shared.input', ['name' => 'telephone', 'value' => $user->telephone,
+                                'class' => 'col-md-6'])
+
+                            @include('shared.input', ['name' => 'adresse', 'value' => $user->adresse,
+                                'class' => 'col-md-6'])
+                        </div>
+
+                        @include('shared.select', ['name' => 'role_user_id', 'value' => $user->role_user_id,
+                            'label' => 'Role', 'options' => $roles ])
 
                         <button type="submit" class="btn btn-primary">
-                            @if($vehicule->exists)
+                            @if($user->exists)
                                 Modifier
                             @else
                                 Creer

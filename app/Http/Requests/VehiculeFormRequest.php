@@ -23,11 +23,11 @@ class VehiculeFormRequest extends FormRequest
     {
         // TODO: completer les regles de validation
         return [
-            'matricule' => ['string', 'required', 'min:4', 'max:10', 'unique:vehicules'],
-            'date_achat' => ['date', 'required'],
+            'matricule' => ['string', 'required'],
+            'date_achat' => ['string', 'required'],
             'km_defaut' => ['integer', 'required'],
             'statut' => ['required', 'string'],
-            'image_vehicule' => ['required', 'string', 'extensions:.jpg,.png,.jpeg'],
+            'image_vehicule' => ['image'],
             'categorie' => ['required', 'string']
         ];
     }

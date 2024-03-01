@@ -23,8 +23,8 @@
                   name="{{ $name }}" @required($required) rows="3"
         >{{ old($name, $value) }}</textarea>
     @else
-        <input type={{ $type }} class="form-control" id="{{ $name }}" name="{{ $name }}"
-               value="{{ old($name, $value) }}" @required($required) >
+        <input type="{{ $type }}" class="form-control @error($name) is-invalid @enderror" id="{{ $name }}"
+               name="{{ $name }}" value="{{ old($name, $value) }}" @required($required) >
     @endif
 
     @error($name)

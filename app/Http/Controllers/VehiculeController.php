@@ -54,12 +54,16 @@ class VehiculeController extends Controller
      * @return mixed
      */
     private function setImage(Vehicule $vehicule, VehiculeFormRequest $request) {
+
         $data = $request->validated();
 
         /* @var UploadedFile|null $image */
         $image = $request->validated('image_vehicule');
 
-        if ( $image !== null && !$image->getError() )
+        if ( $image == null || $image->getError() ){
+            return $data;
+        }
+        else
         {
 
             if ($vehicule->image_vehicule)
@@ -91,7 +95,14 @@ class VehiculeController extends Controller
      */
     public function store(VehiculeFormRequest $request)
     {
-        Vehicule::create($this->setImage(new Vehicule(), $request));
+
+        try {
+            $data = $this->setImage(new Vehicule(), $request);
+            $data['km_actuel'] = $data['km_defaut'];
+            Vehicule::create($data);
+        } catch (\Exception $ex) {
+            dd($ex);
+        }
 
         return to_route('admin.vehicule.index')
             -> with('success', 'Role modifié avec succès');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserFormRequest;
+use App\Models\RoleUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,46 +24,65 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.form', ['user' => new User() ]);
+        $datas = RoleUser::all();
+
+        $roles = array();
+        foreach ($datas as $data)
+        {
+            $roles[$data->name] = $data->id;
+        }
+        return view('admin.user.form', [
+            'user' => new User(),
+            'roles' => $roles,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
-        //
+        User::create($request->validated());
+
+        return to_route('admin.user.index')
+            -> with('success', 'Utilisateur modifié avec succès');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('admin.user.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.user.form', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserFormRequest $request, User $user)
     {
-        //
+        $user->update($request->validated());
+
+        return to_route('admin.user.index')
+            ->with('success', 'Utilisateur modifié avec succès');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect() -> back()
+            -> with('success', "Utilisateur supprimer avec succès");
     }
 }

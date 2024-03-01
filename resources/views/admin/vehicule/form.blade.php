@@ -17,7 +17,7 @@
                         class="needs-validation vstack gap-2"
                         action="{{ route($vehicule->exists
                                 ? 'admin.vehicule.update'
-                                : 'admin.vehicuke.store',
+                                : 'admin.vehicule.store',
                                  $vehicule)
                         }}"
                         enctype="multipart/form-data" novalidate
@@ -26,8 +26,8 @@
                         @csrf
                         @method($vehicule->exists ? "PUT" : "POST")
 
-                        @includeUnless($vehicule->exists, 'shared.input',
-                            ['label' => 'Image', 'name' => 'image_vehicule', 'type' => 'file'])
+                        @includeUnless($vehicule->exists, 'shared.input', ['required' => false,
+                            'label' => 'Image', 'name' => 'image_vehicule', 'type' => 'file'])
 
                         @include('shared.input', ['name' => "matricule", 'value' => $vehicule->matricule])
 
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="row">
-                            @include('shared.select', ['name' => 'status', 'options' => $statuts,
+                            @include('shared.select', ['name' => 'statut', 'options' => $statuts,
                                 'value' => $vehicule->statut, 'class' => 'col-md-6'])
 
                             @include('shared.select', ['name' => 'categorie', 'options' => $categories,

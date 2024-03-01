@@ -36,7 +36,7 @@ class ContratController extends Controller
     public function store(ContratFormRequest $request)
     {
         Contrat::create($request->validated());
-        return to_route('admin.contrat.index')
+        return to_route('admin.contrats.index')
             ->with('succes', 'Contrat Créé avec succés');
     }
 
@@ -66,7 +66,7 @@ class ContratController extends Controller
     public function update(ContratFormRequest $request, Contrat $contrat)
     {
         $contrat->update($request->validated());
-        return to_route('admin.contrat.index')
+        return to_route('admin.contrats.index')
             ->with('success', "Contrat mis a jour");
     }
 
