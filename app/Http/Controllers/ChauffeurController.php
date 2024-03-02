@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ChauffeurFormRequest;
 use App\Models\Chauffeur;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ChauffeurController extends Controller
@@ -15,8 +16,9 @@ class ChauffeurController extends Controller
     {
         $chauffeur = Chauffeur::with('vehicule')
             ->paginate(20);
-        return view('admin.chauffeur.index',
-            compact('chauffeur'));
+        return view('admin.chauffeur.index', [
+            'chauffeurs'=> $chauffeur,
+        ]);
     }
 
     /**
@@ -24,8 +26,10 @@ class ChauffeurController extends Controller
      */
     public function create()
     {
-        return view('admin.chauffeur.form',
-            ['chauffeur' => new Chauffeur()]);
+        return view('admin.chauffeur.form', [
+            'chauffeur' => new Chauffeur(),
+            'utilisateurs' => User::with('role_user')->get(),
+            ]);
 
     }
 

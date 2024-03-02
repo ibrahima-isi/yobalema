@@ -50,12 +50,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function role_user()
+    public function role_user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(RoleUser::class);
     }
 
-    public function locations() {
+    public function locations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(Location::class);
     }
 
