@@ -35,7 +35,7 @@
                             <td>{{ $user->telephone }}</td>
                             <td>{{ $user->adresse }}</td>
                             <td>{{ $user->role_user->name ?? 'no role yet' }}</td>
-                            <td>
+                            <td class="d-flex align-items-center gap-1">
 
                                 @if(Route::has("admin.user.edit"))
                                     <a href="{{ route("admin.user.edit", $user) }}" class="btn btn-primary"
@@ -49,7 +49,10 @@
                                         @csrf
                                         @method("DELETE")
                                         <button type="submit" class="btn btn-danger" title="Supprimer"
-                                                onclick="event.preventDefault();this.closest('form').submit();">
+                                                onclick="confirm('Confirmer le suppression')
+                                                ? this.closest('form').submit()
+                                                : event.preventDefault()"
+                                        >
                                             <i class="ti ti-trash"></i>
                                         </button>
                                     </form>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ContratFormRequest;
 use App\Models\Contrat;
-use Illuminate\Http\Request;
 
 class ContratController extends Controller
 {

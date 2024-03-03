@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ChauffeurFormRequest;
 use App\Models\Chauffeur;
-use Illuminate\Http\Request;
 
 class ChauffeurController extends Controller
 {

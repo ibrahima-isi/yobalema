@@ -41,7 +41,7 @@
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
 
-                                <button type="submit" class="btn btn-outline-primary mx-3 mt-2 d-block"
+                                        <button type="submit" class="btn btn-outline-primary mt-2 d-block"
                                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
                                     {{ __('logout') }}
