@@ -44,7 +44,6 @@
                         <div class="row">
                             @include('shared.select', ['name' => 'statut', 'options' => $statuts,
                                 'value' => $vehicule->statut, 'class' => 'col-md-6'])
-
                             @include('shared.select', ['name' => 'categorie', 'options' => $categories,
                                 'value' => $vehicule->categorie, 'class' => 'col-md-6'])
                         </div>
