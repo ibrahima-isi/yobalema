@@ -15,10 +15,11 @@ class ChauffeurController extends Controller
      */
     public function index()
     {
-        $chauffeur = Chauffeur::with('vehicule')
-            ->paginate(20);
+        $chauffeur = User::with('chauffeur_detail')
+            -> where('role_user_id', '=',3)
+            -> paginate(20);
         return view('admin.chauffeur.index', [
-            'chauffeurs'=> $chauffeur,
+            'chauffeurs' => $chauffeur,
         ]);
     }
 
@@ -28,9 +29,9 @@ class ChauffeurController extends Controller
     public function create()
     {
         return view('admin.chauffeur.form', [
-            'chauffeur' => new Chauffeur(),
+            'chauffeur' => new User(),
             'utilisateurs' => User::with('role_user')->get(),
-            ]);
+        ]);
 
     }
 

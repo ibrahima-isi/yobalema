@@ -12,9 +12,11 @@
                     @csrf
                     @method($chauffeur->exists ? "PUT" : "POST")
 
-                    @include('shared.input', ['label' => "Nom", 'name' => "nom", 'value' => $chauffeur->nom])
+                    @include('shared.input', ['label' => "Numero Permis", 'name' => "num_permis",
+                     'value' => $chauffeur->num_permis])
 
-                    @include('shared.input', ['label' => "Prénom", 'name' => "prenom", 'value' => $chauffeur->prenom])
+                    @include('shared.select', ['label' => "Categorie", 'name' => "prenom",
+                     'value' => $chauffeur->prenom])
 
                     @include('shared.input', ['type' => 'email', 'name' => "email", 'value' => $chauffeur->email])
 

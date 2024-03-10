@@ -39,7 +39,5 @@ class DatabaseSeeder extends Seeder
 
         Vehicule::factory(20)->create();
 
-        Chauffeur::factory(10)->create();
-
     }
 }

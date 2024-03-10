@@ -15,28 +15,30 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-
             $table->dateTime('heure_depart');
-
             $table->dateTime('heure_arrivee');
-
             $table->date('date_location');
-
             $table->string('lieu_depart');
-
             $table->string('lieu_destination');
-
             $table->integer('prix_estime');
+            $table->unsignedBigInteger('chauffeur_id');
+            $table->unsignedBigInteger('client_id');
 
-            $table->foreignIdFor(Chauffeur::class)
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('chauffeur_id')
+                -> references('id')
+                -> on('users')
+                -> constrained()
+                -> nullable()
+                -> cascadeOnUpdate()
+                -> cascadeOnDelete();
 
-            $table->foreignIdFor(User::class)
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('client_id')
+                -> references('id')
+                -> on('users')
+                -> constrained()
+                -> nullable()
+                -> cascadeOnUpdate()
+                -> cascadeOnDelete();
 
             $table->timestamps();
         });
