@@ -33,7 +33,7 @@
                                     <span class="spec">Automatic</span>
                                 </li>
                             </ul>
-                            <div class="d-flex align-items-center bg-light p-3">
+                            <div class="p-3 d-flex align-items-center bg-light">
                                 <span>$150/day</span>
                                 <a href="contact.html" class="ml-auto btn btn-primary">Rent Now</a>
                             </div>
@@ -44,13 +44,13 @@
         </div>
     </div>
 
-    <div class="site-section pt-0 pb-0 bg-light">
+    <div class="pt-0 pb-0 site-section bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <!-- Debut forulaire de location -->
                     <form class="trip-form">
-                        <div class="row align-items-center mb-4">
+                        <div class="mb-4 row align-items-center">
                             <div class="col-md-6">
                                 <h3 class="m-0">Begin your trip here</h3>
                             </div>
@@ -192,7 +192,7 @@
     <div class="site-section section-3" style="background-image: url({{ asset('clients/images/hero_2.jpg') }});">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center mb-5">
+                <div class="mb-5 text-center col-12">
                     <h2 class="text-white">Our services</h2>
                 </div>
             </div>
@@ -235,9 +235,9 @@
     </div>
 
 
-    <div class="container site-section mb-5">
-        <div class="row justify-content-center text-center">
-            <div class="col-7 text-center mb-5">
+    <div class="container mb-5 site-section">
+        <div class="text-center row justify-content-center">
+            <div class="mb-5 text-center col-7">
                 <h2>How it works</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda,
@@ -273,8 +273,8 @@
 
     <div class="site-section bg-light">
         <div class="container">
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-7 text-center mb-5">
+            <div class="mb-5 text-center row justify-content-center">
+                <div class="mb-5 text-center col-7">
                     <h2>Customer Testimony</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda,
@@ -283,7 +283,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="mb-4 col-lg-4 mb-lg-0">
                     <div class="testimonial-2">
                         <blockquote class="mb-4">
                             <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem,
@@ -291,12 +291,12 @@
                             </p>
                         </blockquote>
                         <div class="d-flex v-card align-items-center">
-                            <img src="{{ asset('clients/images/person_1.jpg') }}" alt="Image" class="img-fluid mr-3">
+                            <img src="{{ asset('clients/images/person_1.jpg') }}" alt="Image" class="mr-3 img-fluid">
                             <span>Mike Fisher</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="mb-4 col-lg-4 mb-lg-0">
                     <div class="testimonial-2">
                         <blockquote class="mb-4">
                             <p>"Lorem ipsum dolor sit amet,
@@ -305,12 +305,12 @@
                             </p>
                         </blockquote>
                         <div class="d-flex v-card align-items-center">
-                            <img src="{{ asset('clients/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
+                            <img src="{{ asset('clients/images/person_2.jpg') }}" alt="Image" class="mr-3 img-fluid">
                             <span>Jean Stanley</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="mb-4 col-lg-4 mb-lg-0">
                     <div class="testimonial-2">
                         <blockquote class="mb-4">
                             <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem,
@@ -318,7 +318,7 @@
                             </p>
                         </blockquote>
                         <div class="d-flex v-card align-items-center">
-                            <img src="{{ asset('clients/images/person_3.jpg' )}}" alt="Image" class="img-fluid mr-3">
+                            <img src="{{ asset('clients/images/person_3.jpg' )}}" alt="Image" class="mr-3 img-fluid">
                             <span>Katie Rose</span>
                         </div>
                     </div>
@@ -328,10 +328,10 @@
     </div>
 
 
-    <div class="site-section bg-white">
+    <div class="bg-white site-section">
         <div class="container">
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-7 text-center mb-5">
+            <div class="mb-5 text-center row justify-content-center">
+                <div class="mb-5 text-center col-7">
                     <h2>Our Blog</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda,
@@ -341,7 +341,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="mb-4 col-lg-4 col-md-6">
                     <div class="post-entry-1 h-100">
                         <a href="single.html">
                             <img src="{{ asset('clients/images/post_1.jpg') }}" alt="Image"
@@ -350,7 +350,7 @@
                         <div class="post-entry-1-contents">
 
                             <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                            <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span>
+                            <span class="mb-3 meta d-inline-block">July 17, 2019 <span class="mx-2">by</span>
                                 <a href="#">Admin</a></span>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta,
                                 dolore harum molestias consectetur.
@@ -358,7 +358,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="mb-4 col-lg-4 col-md-6">
                     <div class="post-entry-1 h-100">
                         <a href="single.html">
                             <img src="{{ asset('clients/images/img_2.jpg') }}" alt="Image"
@@ -367,7 +367,7 @@
                         <div class="post-entry-1-contents">
 
                             <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                            <span class="meta d-inline-block mb-3">July 17, 2019 <span class="mx-2">by</span>
+                            <span class="mb-3 meta d-inline-block">July 17, 2019 <span class="mx-2">by</span>
                                 <a href="#">Admin</a></span>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta,
                                 dolore harum molestias consectetur.
@@ -376,7 +376,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="mb-4 col-lg-4 col-md-6">
                     <div class="post-entry-1 h-100">
                         <a href="single.html">
                             <img src="{{ asset('clients/images/img_3.jpg') }}" alt="Image"
@@ -385,7 +385,7 @@
                         <div class="post-entry-1-contents">
 
                             <h2><a href="single.html">The best car rent in the entire planet</a></h2>
-                            <span class="meta d-inline-block mb-3">July 17, 2024, <span class="mx-2">by</span>
+                            <span class="mb-3 meta d-inline-block">July 17, 2024, <span class="mx-2">by</span>
                                 <a href="#">Admin</a></span>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores eos soluta,
                                 dolore harum molestias consectetur.
@@ -397,5 +397,26 @@
         </div>
     </div>
 
+    <div id="map" style="height: 400px;"></div>
+
+    <script>
+        function initMap() {
+            // Coordonnées pour centrer la carte
+            var myLatLng = {lat: -34.397, lng: 150.644};
+
+            // Créer une carte avec la clé API
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: myLatLng,
+                zoom: 8
+            });
+
+            // Ajouter un marqueur
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Hello World!'
+            });
+        }
+    </script>
 
 @endsection
