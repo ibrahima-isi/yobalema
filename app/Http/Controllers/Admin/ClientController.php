@@ -48,7 +48,7 @@ class ClientController extends Controller
      */
     public function show(User $client)
     {
-        return view('admin.user.show', compact('user'));
+        return view('admin.user.show', compact('client'));
     }
 
     /**
