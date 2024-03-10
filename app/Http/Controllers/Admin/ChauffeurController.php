@@ -28,7 +28,7 @@ class ChauffeurController extends Controller
         $data = $request->validated();
 
         /* @var UploadedFile|null $image */
-        $image = $request->validated('image_vehicule');
+        $image = $request->validated('image');
 
         if ( $image == null || $image->getError() ){
             return $data;
@@ -41,7 +41,7 @@ class ChauffeurController extends Controller
                 Storage::disk('public')->delete($chauffeur->image);
             }
 
-            $data['image_vehicule'] = $image->store('vehicule', 'public');
+            $data['image'] = $image->store('chauffeur', 'public');
 
         }
 
@@ -78,12 +78,28 @@ class ChauffeurController extends Controller
      */
     public function store(ChauffeurFormRequest $request)
     {
-
-        Chauffeur::create($request->validated());
-
+        try {
+            $data = $this->setImage(new Chauffeur(), $request);
+            Chauffeur::create($data);
+        }catch (\Exception $ex) {
+            echo $ex->getMessage();
+        }
+//        Chauffeur::create($request->validated());
         return to_route('admin.chauffeur.index')
-            -> with('success', 'Role modifié avec succès');
+            -> with('success', 'Chauffeur créé avec succès');
     }
+
+//    public function store(ChauffeurFormRequest $request)
+//    {
+//        try {
+//            $chauffeur = new Chauffeur();
+//            $data = $this->setImage($chauffeur, $request);
+//            $chauffeur->fill($data)->save();
+//        } catch (\Exception $ex) {
+//            dd($ex);
+//        }
+//        return redirect()->route('admin.chauffeur.index')->with('success', 'Chauffeur ajouté avec succès');
+//    }
 
     /**
      * Display the specified resource.

@@ -16,7 +16,7 @@
                     <!-- choisir l'utilisateur -->
                     @if($utilisateurs)
                         <label for="user" class="form-label">Utilisateur <span class="text-danger fw-bold">*</span></label>
-                        <select id="user" class="form-control" name="user" required>
+                        <select id="user" class="form-control" name="user_id" required>
                             <option value="">Selectionner le chauffeur</option>
                             @foreach($utilisateurs as $utilisateur)
                                 @if(strtolower($utilisateur->role_user?->name) == 'chauffeur')
@@ -25,12 +25,13 @@
                                 @endif
                             @endforeach
                         </select>
+                        @error('user_id') {{ $message }} @enderror
                     @else
                         <p>Aucun utilisateur</p>
                     @endif
                     <!-- fin de choix utilisateur -->
 
-                    @include('shared.input', ['label' => "Numero du permis", 'name' => "permis", 'value' => $chauffeur->num_permis])
+                    @include('shared.input', ['label' => "Numero du permis", 'name' => "num_permis", 'value' => $chauffeur->num_permis])
 
                     @include('shared.select', ['label' => "Categorie", 'name' => "categorie", 'value' => $chauffeur->categorie, 'options' => $categories])
 
@@ -53,7 +54,7 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/form.js') }}">
+    <script >
 
     </script>
 @endsection
