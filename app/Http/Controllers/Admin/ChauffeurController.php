@@ -26,7 +26,7 @@ class ChauffeurController extends Controller
     private function setImage(Chauffeur $chauffeur, ChauffeurFormRequest $request) {
 
         $data = $request->validated();
-
+        $data['is_permis_valide'] = true;
         /* @var UploadedFile|null $image */
         $image = $request->validated('image');
 
@@ -52,12 +52,15 @@ class ChauffeurController extends Controller
      */
     public function index()
     {
-        $chauffeur = User::with('chauffeurs')
-            -> where('role_user_id', '=',3)
-            -> paginate(20);
-        return view('admin.chauffeur.index', [
-            'chauffeurs' => $chauffeur,
-        ]);
+        $chauffeurs = [];
+        $users = User::with('chauffeurs')
+            -> where('role_user_id', '=',3)->get();
+        foreach ($users as $user){
+            if($user->chauffeurs?->num_permis != null){
+                $chauffeurs[] = $user;
+            }
+        }
+        return view('admin.chauffeur.index', ['users' => $chauffeurs,]);
     }
 
     /**
@@ -78,14 +81,24 @@ class ChauffeurController extends Controller
      */
     public function store(ChauffeurFormRequest $request)
     {
+        $chauffeurs = [];
         try {
             $data = $this->setImage(new Chauffeur(), $request);
             Chauffeur::create($data);
+            $chauffeur = Chauffeur::latest()->first();
+            if($chauffeur){
+                $users = User::with('chauffeurs')
+                    -> where('role_user_id', '=',3)->get();
+                foreach ($users as $user){
+                    if($user->chauffeurs?->num_permis != null){
+                        $chauffeurs[] = $user;
+                    }
+                }
+            }
         }catch (\Exception $ex) {
-            echo $ex->getMessage();
+            dd($ex);
         }
-//        Chauffeur::create($request->validated());
-        return to_route('admin.chauffeur.index')
+        return to_route('admin.contrat.create', ['chauffeurs' => $chauffeurs ? $chauffeurs : new User()])
             -> with('success', 'Chauffeur créé avec succès');
     }
 
