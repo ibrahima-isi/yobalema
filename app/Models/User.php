@@ -50,8 +50,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function chauffeur_detail() {
-        return $this->belongsTo(ChauffeurDetail::class);
+    public function chauffeurs(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Chauffeur::class);
     }
 
     public function role_user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

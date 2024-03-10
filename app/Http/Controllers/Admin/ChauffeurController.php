@@ -15,7 +15,7 @@ class ChauffeurController extends Controller
      */
     public function index()
     {
-        $chauffeur = User::with('chauffeur_detail')
+        $chauffeur = User::with('chauffeurs')
             -> where('role_user_id', '=',3)
             -> paginate(20);
         return view('admin.chauffeur.index', [

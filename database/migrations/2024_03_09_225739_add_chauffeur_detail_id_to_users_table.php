@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Chauffeur;
 use App\Models\ChauffeurDetail;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(ChauffeurDetail::class) -> nullable()
+            $table->foreignIdFor(Chauffeur::class) -> nullable()
                 ->constrained() -> cascadeOnDelete() -> cascadeOnUpdate() ;
 
         });
@@ -25,7 +26,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeignIdFor(ChauffeurDetail::class);
+            $table->dropForeignIdFor(Chauffeur::class);
         });
     }
 };
