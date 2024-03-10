@@ -13,23 +13,7 @@
 
 namespace App\Models{
 /**
- * App\Models\Chauffeur
- *
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Location> $locations
- * @property-read int|null $locations_count
- * @property-read \App\Models\Vehicule|null $vehicule
- * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur query()
- * @mixin \Eloquent
- */
-	#[\AllowDynamicProperties]
-	class IdeHelperChauffeur {}
-}
-
-namespace App\Models{
-/**
- * App\Models\ChauffeurDetail
+ * 
  *
  * @property int $id
  * @property string $num_permis
@@ -43,31 +27,33 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $user_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Location> $locations
+ * @property-read int|null $locations_count
  * @property-read \App\Models\Vehicule|null $vehicule
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail query()
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereAnneeExperience($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereCategorie($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereDateDelivrance($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereDateExpiration($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereIsPermisValide($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereNumPermis($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ChauffeurDetail whereVehiculeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereAnneeExperience($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereCategorie($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereDateDelivrance($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereDateExpiration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereIsPermisValide($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereNumPermis($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chauffeur whereVehiculeId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
-	class IdeHelperChauffeurDetail {}
+	class IdeHelperChauffeur {}
 }
 
 namespace App\Models{
 /**
- * App\Models\Contrat
+ * 
  *
  * @property int $id
  * @property int $user_id
@@ -99,7 +85,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Location
+ * 
  *
  * @property int $id
  * @property string $heure_depart
@@ -135,7 +121,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Payement
+ * 
  *
  * @property int $id
  * @property string $mode
@@ -163,7 +149,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\RoleUser
+ * 
  *
  * @property int $id
  * @property string $name
@@ -186,7 +172,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\User
+ * 
  *
  * @property int $id
  * @property string $nom
@@ -200,8 +186,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $role_user_id
- * @property int|null $chauffeur_detail_id
- * @property-read \App\Models\ChauffeurDetail|null $chauffeur_detail
+ * @property int|null $chauffeur_id
+ * @property-read \App\Models\Chauffeur|null $chauffeurs
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Location> $locations
  * @property-read int|null $locations_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
@@ -214,7 +200,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAdresse($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereChauffeurDetailId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereChauffeurId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
@@ -234,7 +220,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Vehicule
+ * 
  *
  * @property int $id
  * @property string $matricule

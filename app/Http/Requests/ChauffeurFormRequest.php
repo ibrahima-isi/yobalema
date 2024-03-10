@@ -27,9 +27,10 @@ class ChauffeurFormRequest extends FormRequest
             'date_delivrance' => ['required', 'date'],
             'date_expiration' => ['required', 'date'],
             'annee_experience' => ['required', 'integer'],
-            'is_permis_valide' => ['required'],
-            'image' => ['required', 'string', 'extensions:.jpg,.png,.jpeg'],
+//            'is_permis_valide' => ['required'],
+            'image' => ['required', 'image', 'extensions:jpg,png,jpeg'],
             "vehicule_id" => ['integer'],
+            'user_id' => ['integer', 'required'],
         ];
     }
 }

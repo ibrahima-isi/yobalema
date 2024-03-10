@@ -1,5 +1,5 @@
 @extends('layouts.admin.base')
-@section('title', $chauffeur->exists ? 'Modifier le chauffeur' : 'Ajouter un chauffer')
+@section('title', $chauffeur->exists ? 'Modifier le chauffeur' : 'Ajouter un chauffeur')
 @section('content')
     <div class="container mt-5">
         <h1>@yield('title')</h1>
@@ -8,6 +8,7 @@
                 <form method="post" class="gap-2 needs-validation vstack"
                       action="{{ route($chauffeur->exists ? 'admin.chauffeur.update' : 'admin.chauffeur.store', $chauffeur) }}"
                       novalidate
+                      enctype="multipart/form-data"
                 >
                     @csrf
                     @method($chauffeur->exists ? "PUT" : "POST")
@@ -18,8 +19,6 @@
                         <select id="user" class="form-control" name="user" required>
                             <option value="">Selectionner le chauffeur</option>
                             @foreach($utilisateurs as $utilisateur)
-                                {{--                               {{ $utilisateur->role_user->id }}--}}
-                                {{--                               {{ $utilisateur->role_user->name }}--}}
                                 @if(strtolower($utilisateur->role_user?->name) == 'chauffeur')
                                     <option
                                         value="{{ $utilisateur->id }}">{{ $utilisateur->prenom }} {{ $utilisateur->nom }}</option>
@@ -31,22 +30,17 @@
                     @endif
                     <!-- fin de choix utilisateur -->
 
-                    @include('shared.input', ['label' => "Nom", 'name' => "nom", 'value' => $chauffeur->nom])
+                    @include('shared.input', ['label' => "Numero du permis", 'name' => "permis", 'value' => $chauffeur->num_permis])
 
-                    @include('shared.input', ['label' => "Prénom", 'name' => "prenom", 'value' => $chauffeur->prenom])
+                    @include('shared.select', ['label' => "Categorie", 'name' => "categorie", 'value' => $chauffeur->categorie, 'options' => $categories])
 
-                    @include('shared.input', ['type' => 'email', 'name' => "email", 'value' => $chauffeur->email])
+                    @include('shared.input', ['type' => 'date', 'name' => "date_delivrance", 'label' => "Date de delivrance", 'value' => $chauffeur->date_delivrance])
 
-                    @include('shared.input', ['type' => 'password', 'name' => 'password', 'label' => 'Mot de passe'])
+                    @include('shared.input', ['type' => 'date', 'name' => "date_expiration", 'label' => "Date de expiration", 'value' => $chauffeur->date_expiration])
 
-                    @include('shared.input', ['type' => 'password', 'name' => 'confirm_password',
-                     'label' => 'Confirmer le mot de passe'])
+                    @include('shared.input', ['type' => 'number', 'name' => "annee_experience", 'label' => 'Annees d\'experience', 'value' => $chauffeur->annee_experience])
 
-                    @include('shared.input', ['label' => 'Téléphone', 'name' => 'telephone',
-                     'value' => $chauffeur->telephone])
-
-                    @include('shared.input', ['name' => 'adresse', 'value' => $chauffeur->adresse])
-
+                    @include('shared.input', ['type' => 'file', 'name' => 'image', 'label' => 'Photo du chauffeur'])
                     <button type="submit" class="btn btn-primary">
                         @if($chauffeur->exists)
                             Continuer la Modification
@@ -59,4 +53,7 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/form.js') }}">
+
+    </script>
 @endsection
