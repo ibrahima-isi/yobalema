@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chauffeur_details', function (Blueprint $table) {
+        Schema::create('chauffeurs', function (Blueprint $table) {
             $table->id();
             $table->string("num_permis")->unique();
             $table->enum('categorie', ['A1', 'A', 'B', 'C', 'D', 'E', 'F']);
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chauffeur_details');
+        Schema::dropIfExists('chauffeurs');
     }
 };

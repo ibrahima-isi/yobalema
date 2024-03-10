@@ -22,14 +22,14 @@ class ChauffeurFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'num_premis' => ['required', 'string', 'min:8', 'max:15', 'unique:chauffeurs'],
+            'num_permis' => ['required', 'string', 'min:8', 'max:15', 'unique:chauffeurs'],
             'categorie' => ['required', 'string'],
             'date_delivrance' => ['required', 'date'],
             'date_expiration' => ['required', 'date'],
             'annee_experience' => ['required', 'integer'],
-            'is_permis_valide' => ['required'],
-            'image' => ['required', 'string', 'extensions:.jpg,.png,.jpeg'],
-            "vehicule_id" => ['integer'],
+            'image' => ['required', 'image', 'extensions:jpg,png,jpeg'],
+//            "vehicule_id" => ['integer'],
+            'user_id' => ['integer', 'required'],
         ];
     }
 }

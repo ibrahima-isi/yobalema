@@ -57,7 +57,6 @@ class VehiculeController extends Controller
     private function setImage(Vehicule $vehicule, VehiculeFormRequest $request) {
 
         $data = $request->validated();
-
         /* @var UploadedFile|null $image */
         $image = $request->validated('image_vehicule');
 
@@ -66,14 +65,11 @@ class VehiculeController extends Controller
         }
         else
         {
-
             if ($vehicule->image_vehicule)
             {
                 Storage::disk('public')->delete($vehicule->image_vehicule);
             }
-
             $data['image_vehicule'] = $image->store('vehicule', 'public');
-
         }
 
         return $data;
