@@ -14,9 +14,13 @@ class Contrat extends Model
 
     protected $guarded = [];
 
-    public function chauffeur()
+    public function chauffeur(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Chauffeur::class);
     }
 
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

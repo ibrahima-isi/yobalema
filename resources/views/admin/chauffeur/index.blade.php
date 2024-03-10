@@ -12,6 +12,7 @@
             <table class="table table-striped">
                 <thead class="table-header-group">
                 <tr>
+                    <th>#</th>
                     <th scope="col">Profile</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Email</th>
@@ -26,25 +27,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($chauffeurs as $chauffeur)
+                @foreach($users as $user)
                     <tr>
+                        <td>{{ $user->id }}</td>
                         <td>
-                            <img src="{{ asset('/storage/'.$chauffeur->image) }}" class="rounded"
-                            alt="Chauffeur Avatar" width="150" height="150">
+                            <img src="{{ asset('/storage/'.$user->chauffeurs?->image) }}" class="rounded"
+                                 alt="Chauffeur Avatar" width="150" height="150">
                         </td>
-                        <td>{{ $chauffeur->num_permis }}</td>
-                        <td>{{ $chauffeur->categorie }}</td>
-                        <td>{{ $chauffeur->date_delivrance }}</td>
-                        <td>{{ $chauffeur->expiration }}</td>
-                        <td>{{ $chauffeur->annee_experience }}</td>
+                        <td>{{ $user->nom }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->telephone }}</td>
+                        <td>{{ $user->adresse }}</td>
+                        <td>{{ $user->chauffeurs?->num_permis }}</td>
+                        <td>{{ $user->chauffeurs?->categorie }}</td>
+                        <td>{{ $user->chauffeurs?->date_delivrance }}</td>
+                        <td>{{ $user->chauffeurs?->date_expiration }}</td>
+                        <td>{{ $user->chauffeurs?->annee_experience }}</td>
                         <td>
-                            <a href="{{ route("admin.chauffeur.edit", $chauffeur) }}"
-                               class="btn btn-primary">Modifier</a>
-                            <form action="{{ route("admin.chauffeur.destroy", $chauffeur) }}" method="post"
+                            <a href="{{ route("admin.chauffeur.edit", $user) }}"
+                               class="btn btn-primary"><i class="ti ti-pencil"> </i></a>
+                            <form action="{{ route("admin.chauffeur.destroy", $user) }}" method="post"
                                   class="needs-validation d-inline" novalidate>
                                 @csrf
                                 @method("DELETE")
-                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                <button type="submit" class="btn btn-danger"> <i class="ti ti-trash"></i></button>
                             </form>
                         </td>
                     </tr>

@@ -4,8 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -50,17 +53,22 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function chauffeurs(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function chauffeurs(): HasOne
     {
-        return $this->belongsTo(Chauffeur::class);
+        return $this->hasOne(Chauffeur::class);
     }
 
-    public function role_user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function contrats(): HasOne
+    {
+        return $this->hasOne(Contrat::class);
+    }
+
+    public function role_user(): BelongsTo
     {
         return $this->belongsTo(RoleUser::class);
     }
 
-    public function locations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function locations():  HasMany
     {
         return $this->hasMany(Location::class);
     }
