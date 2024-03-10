@@ -15,8 +15,7 @@
                     @include('shared.input', ['label' => "Numero Permis", 'name' => "num_permis",
                      'value' => $chauffeur->num_permis])
 
-                    @include('shared.select', ['label' => "Categorie", 'name' => "prenom",
-                     'value' => $chauffeur->prenom])
+                    @include('shared.select', ['label' => "Categorie", 'name' => "categorie"])
 
                     @include('shared.input', ['type' => 'email', 'name' => "email", 'value' => $chauffeur->email])
 

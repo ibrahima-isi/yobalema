@@ -1,10 +1,10 @@
 @extends('layouts.client.base')
 
-@section('title', "D'inscription")
+@section('title',  $client->exists ? "Modifier d'un Client" : 'Ajouter un client')
 
 @section('content')
-
-    <div class="container mt-5">
+    <div class="bg-secondary" style="height: 100px;"></div>
+    <div class="container my-5">
         <div class="card">
             <div class="card-header">
                 <h4>@yield('title')</h4>

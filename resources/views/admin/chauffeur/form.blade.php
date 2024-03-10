@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5">
         <h1>@yield('title')</h1>
-        <div class="card col-md-8">
+        <div class="card col-md-8 m-auto">
             <div class="card-body">
                 <form method="post" class="gap-2 needs-validation vstack"
         action="{{ route($chauffeur->exists ? 'admin.chauffeur.update' : 'admin.chauffeur.store', $chauffeur) }}"
