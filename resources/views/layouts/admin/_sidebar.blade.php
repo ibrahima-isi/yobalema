@@ -6,7 +6,7 @@
             <a href="/" class="text-nowrap logo-img">
                 <img src="{{ asset('assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
             </a>
-            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <div class="cursor-pointer close-btn d-xl-none d-block sidebartoggler" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
             </div>
         </div>
@@ -130,10 +130,10 @@
                     </a>
                 </li>
             </ul>
-            <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
+            <div class="mt-5 rounded unlimited-access hide-menu bg-light-primary position-relative mb-7">
                 <div class="d-flex">
                     <div class="unlimited-access-title me-3">
-                        <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Aller à l'accueil</h6>
+                        <h6 class="mb-6 fw-semibold fs-4 text-dark w-85">Aller à l'accueil</h6>
                         <a href="#" target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Home</a>
                     </div>
                     <div class="unlimited-access-img">
