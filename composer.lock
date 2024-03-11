@@ -4,8 +4,134 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0f66bf526e64f18264d8951275400fd",
+    "content-hash": "654b1b14c5d1c1d4bd26e1a8494beb49",
     "packages": [
+        {
+            "name": "alexpechkarev/geometry-library",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexpechkarev/geometry-library.git",
+                "reference": "71e40bd2ecdc86d3d985422b0c32d5f0d91a5612"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexpechkarev/geometry-library/zipball/71e40bd2ecdc86d3d985422b0c32d5f0d91a5612",
+                "reference": "71e40bd2ecdc86d3d985422b0c32d5f0d91a5612",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeometryLibrary\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Pechkarev",
+                    "email": "alexpechkarev@gmail.com"
+                }
+            ],
+            "description": "PHP Geometry library provides utility functions for the computation of geometric data on the surface of the Earth.",
+            "homepage": "https://alexpechkarev.github.io/geometry-library/",
+            "keywords": [
+                "computations polygons and polylines",
+                "encoding and decoding polyline paths utilities",
+                "google maps geometry library",
+                "php geometry library",
+                "spherical geometry utilities"
+            ],
+            "support": {
+                "issues": "https://github.com/alexpechkarev/geometry-library/issues",
+                "source": "https://github.com/alexpechkarev/geometry-library/tree/1.0.4"
+            },
+            "time": "2021-10-18T15:15:05+00:00"
+        },
+        {
+            "name": "alexpechkarev/google-maps",
+            "version": "v10.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexpechkarev/google-maps.git",
+                "reference": "7b0443b873449d21ca903d7a5aa075be795dec47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexpechkarev/google-maps/zipball/7b0443b873449d21ca903d7a5aa075be795dec47",
+                "reference": "7b0443b873449d21ca903d7a5aa075be795dec47",
+                "shasum": ""
+            },
+            "require": {
+                "alexpechkarev/geometry-library": "^1.0.2|^1.0",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "illuminate/config": "^8.0|^9.0|^10.0",
+                "illuminate/support": "^8.0|^9.0|^10.0",
+                "jbroadway/urlify": "^1.1|^1.2|dev-voku-portable-ascii-2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.*|^9.6.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "10.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider"
+                    ],
+                    "aliases": {
+                        "GoogleMaps": "GoogleMaps\\Facade\\GoogleMapsFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GoogleMaps\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Pechkarev",
+                    "email": "alexpechkarev@gmail.com"
+                }
+            ],
+            "description": "Collection of Google Maps API Web Services for Laravel",
+            "homepage": "https://alexpechkarev.github.io/google-maps/",
+            "keywords": [
+                "Google Maps API",
+                "directions api",
+                "distance matrix api",
+                "elevation api",
+                "geocoding api",
+                "geolocation api",
+                "google maps api for laravel",
+                "google maps web service for laravel",
+                "laravel google maps api",
+                "places api web service",
+                "roads api",
+                "time zone api"
+            ],
+            "support": {
+                "issues": "https://github.com/alexpechkarev/google-maps/issues",
+                "source": "https://github.com/alexpechkarev/google-maps/tree/v10.0.2"
+            },
+            "time": "2023-02-19T10:48:09+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -573,6 +699,58 @@
             "time": "2023-10-12T05:21:21+00:00"
         },
         {
+            "name": "geokit/geokit",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jsor/geokit.git",
+                "reference": "844c215eb4061a3ef4d9beaedf04b623ddddb08b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jsor/geokit/zipball/844c215eb4061a3ef4d9beaedf04b623ddddb08b",
+                "reference": "844c215eb4061a3ef4d9beaedf04b623ddddb08b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Geokit\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@gmail.com",
+                    "homepage": "http://sorgalla.com"
+                }
+            ],
+            "description": "Geo-Toolkit for PHP",
+            "homepage": "https://github.com/jsor/geokit",
+            "keywords": [
+                "geo",
+                "geography",
+                "geometry"
+            ],
+            "support": {
+                "issues": "https://github.com/jsor/geokit/issues",
+                "source": "https://github.com/jsor/geokit/tree/v1.3.0"
+            },
+            "time": "2016-07-11T12:26:49+00:00"
+        },
+        {
             "name": "graham-campbell/result-type",
             "version": "v1.1.2",
             "source": {
@@ -1046,17 +1224,88 @@
             "time": "2023-12-03T19:50:20+00:00"
         },
         {
-            "name": "laravel/framework",
-            "version": "v10.46.0",
+            "name": "jbroadway/urlify",
+            "version": "1.2.4-stable",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "5e95946a8283a8d5c015035793f9c61c297e937f"
+                "url": "https://github.com/jbroadway/urlify.git",
+                "reference": "d0fafbaa1dc14e8039cdf5c72a932a8d1de1750e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5e95946a8283a8d5c015035793f9c61c297e937f",
-                "reference": "5e95946a8283a8d5c015035793f9c61c297e937f",
+                "url": "https://api.github.com/repos/jbroadway/urlify/zipball/d0fafbaa1dc14e8039cdf5c72a932a8d1de1750e",
+                "reference": "d0fafbaa1dc14e8039cdf5c72a932a8d1de1750e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "voku/portable-ascii": "^2.0",
+                "voku/stop-words": "^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "URLify": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause-Clear"
+            ],
+            "authors": [
+                {
+                    "name": "Johnny Broadway",
+                    "email": "johnny@johnnybroadway.com",
+                    "homepage": "http://www.johnnybroadway.com/"
+                }
+            ],
+            "description": "A fast PHP slug generator and transliteration library that converts non-ascii characters for use in URLs.",
+            "homepage": "https://github.com/jbroadway/urlify",
+            "keywords": [
+                "ascii",
+                "blogging",
+                "blogs",
+                "downcode",
+                "encode",
+                "iconv",
+                "link",
+                "seo",
+                "slug",
+                "slugify",
+                "slugs",
+                "translit",
+                "transliterate",
+                "transliteration",
+                "unicode",
+                "url",
+                "urlify"
+            ],
+            "support": {
+                "issues": "https://github.com/jbroadway/urlify/issues",
+                "source": "https://github.com/jbroadway/urlify/tree/1.2.4-stable"
+            },
+            "time": "2022-06-15T16:46:46+00:00"
+        },
+        {
+            "name": "laravel/framework",
+            "version": "v10.47.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "fce29b8de62733cdecbe12e3bae801f83fff2ea4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/fce29b8de62733cdecbe12e3bae801f83fff2ea4",
+                "reference": "fce29b8de62733cdecbe12e3bae801f83fff2ea4",
                 "shasum": ""
             },
             "require": {
@@ -1249,7 +1498,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-02-27T16:46:54+00:00"
+            "time": "2024-03-05T15:18:36+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -1690,16 +1939,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.24.0",
+            "version": "3.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "b25a361508c407563b34fac6f64a8a17a8819675"
+                "reference": "4c44347133618cccd9b3df1729647a1577b4ad99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b25a361508c407563b34fac6f64a8a17a8819675",
-                "reference": "b25a361508c407563b34fac6f64a8a17a8819675",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4c44347133618cccd9b3df1729647a1577b4ad99",
+                "reference": "4c44347133618cccd9b3df1729647a1577b4ad99",
                 "shasum": ""
             },
             "require": {
@@ -1727,7 +1976,7 @@
                 "friendsofphp/php-cs-fixer": "^3.5",
                 "google/cloud-storage": "^1.23",
                 "microsoft/azure-storage-blob": "^1.1",
-                "phpseclib/phpseclib": "^3.0.34",
+                "phpseclib/phpseclib": "^3.0.36",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.5.11|^10.0",
                 "sabre/dav": "^4.6.0"
@@ -1764,7 +2013,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.24.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.25.0"
             },
             "funding": [
                 {
@@ -1776,7 +2025,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-04T12:10:17+00:00"
+            "time": "2024-03-09T17:06:45+00:00"
         },
         {
             "name": "league/flysystem-local",
@@ -1837,6 +2086,68 @@
                 }
             ],
             "time": "2024-01-26T18:25:23+00:00"
+        },
+        {
+            "name": "league/geotools",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/geotools.git",
+                "reference": "ad965ca23d505b1421935a4ce23493aedfed7ef7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/geotools/zipball/ad965ca23d505b1421935a4ce23493aedfed7ef7",
+                "reference": "ad965ca23d505b1421935a4ce23493aedfed7ef7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "react/async": "1.0.*",
+                "willdurand/geocoder": "1.2.*"
+            },
+            "require-dev": {
+                "react/react": "0.2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Geotools": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antoine Corcy",
+                    "email": "contact@sbin.dk",
+                    "homepage": "http://sbin.dk"
+                }
+            ],
+            "description": "Geo-related tools PHP 5.3 library",
+            "homepage": "https://github.com/toin0u/Geotools",
+            "keywords": [
+                "batch",
+                "bounds",
+                "distance",
+                "geocoder",
+                "geocoding",
+                "geoip",
+                "geometry",
+                "geotools"
+            ],
+            "support": {
+                "issues": "https://github.com/toin0u/Geotools/issues",
+                "source": "https://github.com/toin0u/Geotools"
+            },
+            "time": "2013-02-13T23:04:04+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -2252,16 +2563,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.0.1",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "2218c2252c874a4624ab2f613d86ac32d227bc69"
+                "reference": "139676794dc1e9231bf7bcd123cfc0c99182cb13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2218c2252c874a4624ab2f613d86ac32d227bc69",
-                "reference": "2218c2252c874a4624ab2f613d86ac32d227bc69",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/139676794dc1e9231bf7bcd123cfc0c99182cb13",
+                "reference": "139676794dc1e9231bf7bcd123cfc0c99182cb13",
                 "shasum": ""
             },
             "require": {
@@ -2304,9 +2615,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.0.1"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.0.2"
             },
-            "time": "2024-02-21T19:24:10+00:00"
+            "time": "2024-03-05T20:51:40+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -3184,6 +3495,61 @@
                 }
             ],
             "time": "2023-11-08T05:53:05+00:00"
+        },
+        {
+            "name": "react/async",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/async.git",
+                "reference": "568a29207cfc00b3270c9d0158b0ec0a65a2194f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/async/zipball/568a29207cfc00b3270c9d0158b0ec0a65a2194f",
+                "reference": "568a29207cfc00b3270c9d0158b0ec0a65a2194f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "react/event-loop": "0.2.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "React\\Async": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Async utilities for React.",
+            "keywords": [
+                "async"
+            ],
+            "support": {
+                "issues": "https://github.com/reactphp/async/issues",
+                "source": "https://github.com/reactphp/async/tree/v1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/clue",
+                    "type": "github"
+                }
+            ],
+            "time": "2013-02-06T23:27:19+00:00"
         },
         {
             "name": "symfony/console",
@@ -5627,6 +5993,53 @@
             "time": "2022-03-08T17:03:00+00:00"
         },
         {
+            "name": "voku/stop-words",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voku/stop-words.git",
+                "reference": "8e63c0af20f800b1600783764e0ce19e53969f71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voku/stop-words/zipball/8e63c0af20f800b1600783764e0ce19e53969f71",
+                "reference": "8e63c0af20f800b1600783764e0ce19e53969f71",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "voku\\": "src/voku/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Moelleken",
+                    "homepage": "http://www.moelleken.org/"
+                }
+            ],
+            "description": "Stop-Words via PHP",
+            "keywords": [
+                "stop words",
+                "stop-words"
+            ],
+            "support": {
+                "issues": "https://github.com/voku/stop-words/issues",
+                "source": "https://github.com/voku/stop-words/tree/master"
+            },
+            "time": "2018-11-23T01:37:27+00:00"
+        },
+        {
             "name": "webmozart/assert",
             "version": "1.11.0",
             "source": {
@@ -5683,28 +6096,90 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "willdurand/geocoder",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geocoder-php/php-common.git",
+                "reference": "3722fdd02e41fc55fe1f6f7dc91d7aef57515a9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geocoder-php/php-common/zipball/3722fdd02e41fc55fe1f6f7dc91d7aef57515a9e",
+                "reference": "3722fdd02e41fc55fe1f6f7dc91d7aef57515a9e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "guzzle/guzzle": "*",
+                "kriswallsmith/buzz": "*",
+                "zendframework/zend-http": "*"
+            },
+            "suggest": {
+                "ext-curl": "Enabling the curl extension allows you to use CurlHttpAdapter.",
+                "guzzle/guzzle": "Enabling Guzzle allows you to use the GuzzleHttpAdapter.",
+                "kriswallsmith/buzz": "Enabling Buzz allows you to use the BuzzHttpAdapter.",
+                "zendframework/zend-http": "Enabling Zend_Http allows you to use the ZendHttpAdapter."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Geocoder": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William DURAND",
+                    "email": "william.durand1@gmail.com"
+                }
+            ],
+            "description": "The almost missing Geocoder PHP 5.3 library.",
+            "homepage": "http://geocoder-php.org",
+            "keywords": [
+                "abstraction",
+                "geocoder",
+                "geocoding",
+                "geoip"
+            ],
+            "support": {
+                "source": "https://github.com/geocoder-php/php-common/tree/1.2.1"
+            },
+            "time": "2013-02-03T02:01:33+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.10.6",
+            "version": "v3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "1fcb37307ebb32207dce16fa160a92b14d8b671f"
+                "reference": "762684120b4edba3f2cd1d2c33d63a34866b6caa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/1fcb37307ebb32207dce16fa160a92b14d8b671f",
-                "reference": "1fcb37307ebb32207dce16fa160a92b14d8b671f",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/762684120b4edba3f2cd1d2c33d63a34866b6caa",
+                "reference": "762684120b4edba3f2cd1d2c33d63a34866b6caa",
                 "shasum": ""
             },
             "require": {
                 "illuminate/routing": "^9|^10|^11",
                 "illuminate/session": "^9|^10|^11",
                 "illuminate/support": "^9|^10|^11",
-                "maximebf/debugbar": "~1.20.1",
+                "maximebf/debugbar": "~1.21.0",
                 "php": "^8.0",
                 "symfony/finder": "^6|^7"
             },
@@ -5756,7 +6231,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
-                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.10.6"
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.11.0"
             },
             "funding": [
                 {
@@ -5768,7 +6243,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-01T14:41:13+00:00"
+            "time": "2024-03-09T08:41:41+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -5991,16 +6466,16 @@
         },
         {
             "name": "composer/pcre",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "00104306927c7a0919b4ced2aaa6782c1e61a3c9"
+                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/00104306927c7a0919b4ced2aaa6782c1e61a3c9",
-                "reference": "00104306927c7a0919b4ced2aaa6782c1e61a3c9",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/4775f35b2d70865807c89d32c8e7385b86eb0ace",
+                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace",
                 "shasum": ""
             },
             "require": {
@@ -6042,7 +6517,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/3.1.1"
+                "source": "https://github.com/composer/pcre/tree/3.1.2"
             },
             "funding": [
                 {
@@ -6058,7 +6533,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-11T07:11:09+00:00"
+            "time": "2024-03-07T15:38:35+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -6294,16 +6769,16 @@
         },
         {
             "name": "laravel/breeze",
-            "version": "v1.29.0",
+            "version": "v1.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/breeze.git",
-                "reference": "f4c4cb2197cd96a3d8a913c7b8437291d8bde5af"
+                "reference": "22c53b84b7fff91b01a318d71a10dfc251e92849"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/breeze/zipball/f4c4cb2197cd96a3d8a913c7b8437291d8bde5af",
-                "reference": "f4c4cb2197cd96a3d8a913c7b8437291d8bde5af",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/22c53b84b7fff91b01a318d71a10dfc251e92849",
+                "reference": "22c53b84b7fff91b01a318d71a10dfc251e92849",
                 "shasum": ""
             },
             "require": {
@@ -6352,7 +6827,7 @@
                 "issues": "https://github.com/laravel/breeze/issues",
                 "source": "https://github.com/laravel/breeze"
             },
-            "time": "2024-02-21T14:14:23+00:00"
+            "time": "2024-03-04T14:35:21+00:00"
         },
         {
             "name": "laravel/pint",
@@ -6422,16 +6897,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.28.1",
+            "version": "v1.28.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "f84e444a3dbc1811803cd2a050bdd54ff6f5eef8"
+                "reference": "057777403b8ab79222dcc04983beaab10b6de6a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/f84e444a3dbc1811803cd2a050bdd54ff6f5eef8",
-                "reference": "f84e444a3dbc1811803cd2a050bdd54ff6f5eef8",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/057777403b8ab79222dcc04983beaab10b6de6a0",
+                "reference": "057777403b8ab79222dcc04983beaab10b6de6a0",
                 "shasum": ""
             },
             "require": {
@@ -6480,20 +6955,20 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2024-02-23T00:24:47+00:00"
+            "time": "2024-03-04T14:58:29+00:00"
         },
         {
             "name": "maximebf/debugbar",
-            "version": "v1.20.2",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "484625c23a4fa4f303617f29fcacd42951c9c01d"
+                "reference": "9700e509740daa03d909e5f7cc19f719bcbe6915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/484625c23a4fa4f303617f29fcacd42951c9c01d",
-                "reference": "484625c23a4fa4f303617f29fcacd42951c9c01d",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/9700e509740daa03d909e5f7cc19f719bcbe6915",
+                "reference": "9700e509740daa03d909e5f7cc19f719bcbe6915",
                 "shasum": ""
             },
             "require": {
@@ -6544,9 +7019,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maximebf/php-debugbar/issues",
-                "source": "https://github.com/maximebf/php-debugbar/tree/v1.20.2"
+                "source": "https://github.com/maximebf/php-debugbar/tree/v1.21.0"
             },
-            "time": "2024-02-15T10:49:09+00:00"
+            "time": "2024-03-01T15:28:34+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -7064,16 +7539,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "10.1.12",
+            "version": "10.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "842f72662d6b9edda84c4b6f13885fd9cd53dc63"
+                "reference": "d51c3aec14896d5e80b354fad58e998d1980f8f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/842f72662d6b9edda84c4b6f13885fd9cd53dc63",
-                "reference": "842f72662d6b9edda84c4b6f13885fd9cd53dc63",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d51c3aec14896d5e80b354fad58e998d1980f8f8",
+                "reference": "d51c3aec14896d5e80b354fad58e998d1980f8f8",
                 "shasum": ""
             },
             "require": {
@@ -7130,7 +7605,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.12"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.13"
             },
             "funding": [
                 {
@@ -7138,7 +7613,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-02T07:22:05+00:00"
+            "time": "2024-03-09T16:54:15+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -7385,16 +7860,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.11",
+            "version": "10.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4"
+                "reference": "41a9886b85ac7bf3929853baf96b95361cd69d2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4",
-                "reference": "0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/41a9886b85ac7bf3929853baf96b95361cd69d2b",
+                "reference": "41a9886b85ac7bf3929853baf96b95361cd69d2b",
                 "shasum": ""
             },
             "require": {
@@ -7466,7 +7941,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.11"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.12"
             },
             "funding": [
                 {
@@ -7482,7 +7957,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-25T14:05:00+00:00"
+            "time": "2024-03-09T12:04:07+00:00"
         },
         {
             "name": "sebastian/cli-parser",

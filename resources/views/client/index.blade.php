@@ -47,9 +47,16 @@
     <div class="pt-0 pb-0 site-section bg-light">
         <div class="container">
             <div class="row">
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <div class="col-12">
                     <!-- Debut forulaire de location -->
-                    <form class="trip-form">
+                    <form class="trip-form needs-validation" action="{{ route('admin.location.store') }}"
+                     novalidate method="POST" >
+                     @csrf
                         <div class="mb-4 row align-items-center">
                             <div class="col-md-6">
                                 <h3 class="m-0">Begin your trip here</h3>
@@ -59,11 +66,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            @include('shared.input', ['type'=>'time', 'name' => 'heure_depart',
-                                'label' => 'Heure de départ', 'class' => 'col-md-3', 'value' => old('heure_depart')])
+                            @include('shared.select', ['name' => 'vehicule_id', 'label'=>'Catégorie',
+                            'class' => 'col-md-2', 'value' => old('vehicule_id'), 'options' => $categories])
+
+                            @include('shared.input', ['type'=>'datetime-local', 'name' => 'heure_depart',
+                                'label' => 'Heure de départ', 'class' => 'col-md-2', 'value' => old('heure_depart')])
 
                             @include('shared.input', ['type' => 'date', 'name' => 'date_location',
-                                'label' => 'Date de location', 'class' => 'col-md-3', 'value' => old('date_location')])
+                                'label' => 'Date de location', 'class' => 'col-md-2', 'value' => old('date_location')])
 
                             <script>
                                 document.getElementById('date_location').min = new Date().toISOString().split('T')[0];
@@ -77,7 +87,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="submit" value="Submit" class="btn btn-primary">
+                                <input type="submit" value="Louer un véhicule" class="btn btn-primary">
                             </div>
                         </div>
                     </form>

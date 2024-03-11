@@ -15,20 +15,19 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('heure_depart');
-            $table->dateTime('heure_arrivee');
+            $table->dateTime('heure_depart')->default(now());
+            $table->dateTime('heure_arrivee')->nullable();
             $table->date('date_location');
             $table->string('lieu_depart');
             $table->string('lieu_destination');
             $table->integer('prix_estime');
-            $table->unsignedBigInteger('chauffeur_id');
-            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('chauffeur_id') -> nullable();
+            $table->unsignedBigInteger('client_id') -> nullable();
 
             $table->foreign('chauffeur_id')
                 -> references('id')
                 -> on('users')
                 -> constrained()
-                -> nullable()
                 -> cascadeOnUpdate()
                 -> cascadeOnDelete();
 
@@ -36,7 +35,6 @@ return new class extends Migration
                 -> references('id')
                 -> on('users')
                 -> constrained()
-                -> nullable()
                 -> cascadeOnUpdate()
                 -> cascadeOnDelete();
 
