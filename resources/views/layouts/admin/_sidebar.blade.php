@@ -4,10 +4,12 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="/" class="text-nowrap logo-img">
-                <img src="{{ asset('assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
+                <span class="font-weight-bold fs-8 text-dark">
+                    {{ config('app.name', 'Yobalema') }}
+                </span>
             </a>
             <div class="cursor-pointer close-btn d-xl-none d-block sidebartoggler" id="sidebarCollapse">
-                <i class="ti ti-x fs-8"></i>
+                <i class="ti ti-car"></i>
             </div>
         </div>
         <!-- Sidebar navigation-->

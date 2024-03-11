@@ -13,29 +13,13 @@
                             <h3>Range Rover S7</h3>
                             <ul class="list-unstyled">
                                 <li>
-                                    <span>Doors</span>
-                                    <span class="spec">4</span>
-                                </li>
-                                <li>
-                                    <span>Seats</span>
-                                    <span class="spec">6</span>
-                                </li>
-                                <li>
-                                    <span>Lugage</span>
-                                    <span class="spec">2 Suitcase/2 Bags</span>
-                                </li>
-                                <li>
-                                    <span>Transmission</span>
-                                    <span class="spec">Automatic</span>
-                                </li>
-                                <li>
-                                    <span>Minium age</span>
-                                    <span class="spec">Automatic</span>
+                                    <span>Vehicules Disponibles</span>
+                                    <span class="spec">{{ $vehicules_count }}</span>
                                 </li>
                             </ul>
                             <div class="p-3 d-flex align-items-center bg-light">
-                                <span>$150/day</span>
-                                <a href="contact.html" class="ml-auto btn btn-primary">Rent Now</a>
+                                <span>Louer un vehicule pour 500F ttc/Km</span>
+                                <a href="#form-location" class="ml-auto btn btn-primary">Commencer</a>
                             </div>
                         </div>
                     </div>
@@ -47,14 +31,10 @@
     <div class="pt-0 pb-0 site-section bg-light">
         <div class="container">
             <div class="row">
-                @if(session()->has('error'))
-                    <div class="alert alert-danger">
-                        {{ session()->get('error') }}
-                    </div>
-                @endif
                 <div class="col-12">
                     <!-- Debut forulaire de location -->
-                    <form class="trip-form needs-validation" action="{{ route('admin.location.store') }}"
+                    <form id="form-location" class="trip-form needs-validation"
+                          action="{{ route('admin.location.store') }}"
                      novalidate method="POST" >
                      @csrf
                         <div class="mb-4 row align-items-center">
@@ -62,9 +42,14 @@
                                 <h3 class="m-0">Begin your trip here</h3>
                             </div>
                             <div class="col-md-6 text-md-right">
-                                <span class="text-primary">32</span> <span>cars available</span>
+                                <span class="text-primary">{{ $vehicules_count }}</span> <span>cars available</span>
                             </div>
                         </div>
+                        @if(session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('error') }}
+                            </div>
+                        @endif
                         <div class="row">
                             @include('shared.select', ['name' => 'vehicule_id', 'label'=>'Catégorie',
                             'class' => 'col-md-2', 'value' => old('vehicule_id'), 'options' => $categories])

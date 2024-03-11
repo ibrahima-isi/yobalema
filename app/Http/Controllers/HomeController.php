@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
+use App\Models\Vehicule;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -18,6 +20,12 @@ class HomeController extends Controller
 
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('client.index', ['categories' => $this->categories]);
+        $vehicules_count = Vehicule::all()->count();
+        $locations_count = Location::all()->count();
+        return view('client.index', [
+            'vehicules_count' => $vehicules_count,
+            'locations_count' => $locations_count,
+            'categories' => $this->categories
+        ]);
     }
 }

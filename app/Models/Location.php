@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @mixin IdeHelperLocation
@@ -24,7 +25,10 @@ class Location extends Model
         return $this -> belongsTo(Chauffeur::class);
     }
 
-
+    public function vehicule() : BelongsTo
+    {
+        return $this -> belongsTo(Vehicule::class);
+    }
 
 
 }

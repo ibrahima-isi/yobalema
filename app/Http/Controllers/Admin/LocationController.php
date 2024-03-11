@@ -9,6 +9,7 @@ use App\Models\Location;
 use App\Models\Vehicule;
 use App\Services\OpenWeatherMapService;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Carbon;
 
 class LocationController extends Controller
 {
@@ -53,6 +54,32 @@ class LocationController extends Controller
         return $earthRadius * $c;
     }
 
+    public function clocation()
+    {
+        $locations = Location::with('vehicule', 'chauffeur')
+            ->where('client_id', '=', auth()->user()->id)
+            ->get();
+
+        $statut = [];
+        foreach ($locations as $location) {
+            if ($location->heure_arrivee !== null) {
+                $arrivee = Carbon::parse($location->heure_arrivee);
+                $now = Carbon::now();
+                if($arrivee->gt($now)) {
+                    $statut[$location->id] = 'En cours';
+                } else {
+                    $statut[$location->id] = 'Terminée';
+                }
+            } else {
+                $statut[$location->id] = 'Pas Encore de payement';
+            }
+        }
+
+
+        return view('locations.my-locations',
+            ['locations' => $locations, 'statut' => $statut]);
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -66,6 +93,7 @@ class LocationController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @throws GuzzleException
      */
     public function store(LocationFormRequest $request)
     {
@@ -83,6 +111,7 @@ class LocationController extends Controller
         // Recuperation des vehicule dans la categorie disponible;
 
         $vehicule = Vehicule::where('categorie', '=', $location['vehicule_id'])
+                    ->whereNotNull('chauffeur_id')
                     ->where('statut', '=', 'DISPONIBLE')
                     ->first();
 
@@ -94,13 +123,16 @@ class LocationController extends Controller
 
         $location['vehicule_id'] = $vehicule->id;
 
-        if ($location['vehicule_id'] == null) {
+        $location['chauffeur_id'] = $vehicule->chauffeur->id;
+
+        if ($location['vehicule_id'] == null || $location['chauffeur_id'] == null) {
             return redirect()
                 ->back()
                 ->with('error', 'Vehicule non disponible');
         }
 
         Location::create($location);
+        $vehicule->update(['statut' => 'EN LOCATION']);
 
         return to_route('admin.location.index')
             ->with('success', 'location Créé avec success');

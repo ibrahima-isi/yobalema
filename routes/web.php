@@ -33,6 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/location/client', [LocationController::class, 'clocation'])
+    ->name('location.client')
+    ->middleware('auth')
+;
+
 Route::prefix('admin') -> name("admin.")
     -> middleware('auth')
     -> group( function () {
@@ -46,6 +51,8 @@ Route::prefix('admin') -> name("admin.")
         Route::resource('contrat', ContratController::class);
         Route::resource('location', LocationController::class);
         Route::resource('client', ClientController::class);
+        Route::resource('payement', \App\Http\Controllers\Admin\PayementController::class)
+        ->except('show', 'edit', 'create');
 });
 
 require __DIR__.'/auth.php';
