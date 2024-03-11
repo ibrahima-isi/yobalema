@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChauffeurFormRequest;
 use App\Models\Chauffeur;
+use App\Models\Location;
+use App\Models\Note;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -107,6 +110,23 @@ class ChauffeurController extends Controller
     public function show(Chauffeur $chauffeur)
     {
         return view('admin.chauffeur.show', ['chauffeur' => new Chauffeur()]);
+    }
+
+    public function noter(Request $request)
+    {
+        $validation = $request->validate([
+            'note'=> 'required|integer',
+            'location_id' => 'required|integer',
+        ]);
+
+        $location = Location::find($validation['location_id']);
+        $validation['chauffeur_id'] = $location->chauffeur_id;
+        $validation['user_id'] = auth()->user()->id;
+
+        Note::create($validation);
+
+        return to_route('location.client')
+            ->with('success', 'Chauffeur note');
     }
 
     /**

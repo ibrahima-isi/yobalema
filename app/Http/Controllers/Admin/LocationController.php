@@ -118,7 +118,7 @@ class LocationController extends Controller
         if ($vehicule == null) {
             return redirect()
                 ->back()
-                ->with('error', 'Vehicule non disponible');
+                ->with('error', 'Vehicule non disponible dans cette categorie pour l\'instant');
         }
 
         $location['vehicule_id'] = $vehicule->id;
@@ -170,6 +170,6 @@ class LocationController extends Controller
     public function destroy(Location $location)
     {
         $location->delete();
-        return redirect()->back()-with('success', 'Location supprimée !');
+        return redirect()->back()->with('success', 'Location supprimée !');
     }
 }

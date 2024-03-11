@@ -55,4 +55,8 @@ Route::prefix('admin') -> name("admin.")
         ->except('show', 'edit', 'create');
 });
 
+Route::post('/noter', [ChauffeurController::class, 'noter'])
+    ->name('note.store')
+    ->middleware('auth');
+
 require __DIR__.'/auth.php';

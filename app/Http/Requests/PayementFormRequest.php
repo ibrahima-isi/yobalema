@@ -24,8 +24,6 @@ class PayementFormRequest extends FormRequest
         return [
             'mode' => ['required', 'string'],
             'location_id' => ['required', 'integer'],
-            'montant' => ['required', 'integer'],
-            'date_paiement' => ['required', 'date'],
         ];
     }
 }

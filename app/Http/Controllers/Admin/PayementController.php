@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PayementFormRequest;
+use App\Models\Location;
 use App\Models\Payement;
+use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 
 class PayementController extends Controller
 {
@@ -28,12 +31,29 @@ class PayementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PayementFormRequest $request)
+    public function store(PayementFormRequest $request): RedirectResponse
     {
-        Payement::create($request->validated());
+        $payer = $request->validated();
 
-        return to_route('admin.payement.index')
-            -> with('success', 'Payement modifié avec succès');
+        $location = Location::find($payer['location_id']);
+
+        $payer['montant'] = $location->prix_estime;
+        $payer['date_paiement'] = now();
+
+        // distance = montant / 500
+        $distance = $payer['montant'] / 500;
+        // vitesse moyenne 60mk/heure calcule du heure d'arrivee
+
+        $depart = Carbon::parse($location->heure_depart);
+
+        $arrivee = $depart->addHours($distance / 60);
+
+        $location->update(['heure_arrivee' => $arrivee]);
+
+        Payement::create($payer);
+
+        return to_route('location.client')
+            -> with('success', 'Payement effectué avec succès');
     }
 
     /**
