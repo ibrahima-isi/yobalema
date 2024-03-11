@@ -14,6 +14,8 @@
 
             @include('shared.select', ['label' => 'Chauffeur', 'name' => 'user_id', 'value' => $contrat->chauffeur_id, 'options' => $chauffeurs, 'required' => true])
 
+            @include('shared.select', ['label' => 'Type de contrat', 'name' => 'type_contrat', 'value' => $contrat->type_contrat, 'options' => $type_contrats, 'required' => true])
+
             @include('shared.input', ['label' => 'Duree du contrat', 'name' => 'duree_contrat', 'type' => 'number', 'value' => $contrat->duree_contrat, 'required' => true])
         
             @include('shared.input', ['label' => 'Salaire en FCFA', 'name' => 'salaire', 'type' => 'number', 'value' => $contrat->salaire, 'required' => true])
@@ -33,7 +35,9 @@
             <button type="submit" class="btn btn-primary mt-3">@if($contrat->exists) Modifier le contrat @else @yield('title') @endif </button>
         </form>
     </div>
+    @if(! $contrat->exists)
     <div class="d-flex justify-content-end">
         <a href="{{ route('admin.contrat.index') }}" class="link-primary">Creer plus tard ?</a>
     </div>
+    @endif
 @endsection

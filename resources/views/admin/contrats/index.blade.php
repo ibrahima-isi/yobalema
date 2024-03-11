@@ -36,8 +36,8 @@
                         <td>{{ $user->contrats?->etat_contrat ? 'Actif' : 'Inactif' }}</td>
                         <td>
                             <div class="d-flex justify-content-between mt-2">
-                                <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-primary"><i class="ti ti-pencil"></i></a>
-                                <form action="{{ route('admin.user.destroy', $user) }}" method="POST">
+                                <a href="{{ route('admin.contrat.edit', $user->contrats) }}" class="btn btn-primary"><i class="ti ti-pencil"></i></a>
+                                <form action="{{ route('admin.contrat.destroy', $user->contrats) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"> <i class="ti ti-trash"></i></button>
