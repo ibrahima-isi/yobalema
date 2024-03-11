@@ -19,7 +19,7 @@
 
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
+            <div class="mt-3 site-mobile-menu-close">
                 <span class="icon-close2 js-menu-toggle"></span>
             </div>
         </div>
@@ -39,6 +39,8 @@
 </div>
 
 @include('layouts.client._scripts')
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcnTraR8rzs-NOYZ7jzGVBASwbd0dtsrE&callback=initMap"></script>
 
 </body>
 

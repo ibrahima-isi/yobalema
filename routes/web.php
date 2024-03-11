@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VehiculeController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\ProfileController;
+use App\Services\OpenWeatherMapService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.index');
-})->name('index');
+Route::get('/coordonne', [\App\Http\Controllers\CityController::class, 'testWeather']);
+
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get("/profile", [ProfileController::class, 'edit'])->name('profile.edit');
@@ -46,6 +47,5 @@ Route::prefix('admin') -> name("admin.")
         Route::resource('location', LocationController::class);
         Route::resource('client', ClientController::class);
 });
-
 
 require __DIR__.'/auth.php';

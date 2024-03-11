@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.46.0.
+ * Generated for Laravel 10.47.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -17180,6 +17180,127 @@ namespace Illuminate\Support\Facades {
             }
     }
 
+namespace GoogleMaps\Facade {
+            /**
+     * 
+     *
+     * @see \GoogleMaps\GoogleMaps
+     */        class GoogleMapsFacade {
+                    /**
+         * Bootstrapping Web Service
+         *
+         * @param string $service
+         * @return \GoogleMaps\WebService 
+         * @throws \ErrorException
+         * @static 
+         */        public static function load($service)
+        {
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->load($service);
+        }
+                    /**
+         * Setting endpoint
+         *
+         * @param string $key
+         * @return \GoogleMaps\GoogleMaps 
+         * @static 
+         */        public static function setEndpoint($key = 'json')
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->setEndpoint($key);
+        }
+                    /**
+         * Getting endpoint
+         *
+         * @return string 
+         * @static 
+         */        public static function getEndpoint()
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->getEndpoint();
+        }
+                    /**
+         * Set parameter by key
+         *
+         * @param string $key
+         * @param string $value
+         * @return \GoogleMaps\GoogleMaps 
+         * @static 
+         */        public static function setParamByKey($key, $value)
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->setParamByKey($key, $value);
+        }
+                    /**
+         * Get parameter by the key
+         *
+         * @param string $key
+         * @return string|null 
+         * @static 
+         */        public static function getParamByKey($key)
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->getParamByKey($key);
+        }
+                    /**
+         * Set all parameters at once
+         *
+         * @param array $param
+         * @return \GoogleMaps\GoogleMaps 
+         * @static 
+         */        public static function setParam($param)
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->setParam($param);
+        }
+                    /**
+         * Return parameters array
+         *
+         * @return array 
+         * @static 
+         */        public static function getParam()
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->getParam();
+        }
+                    /**
+         * Get Web Service Response
+         *
+         * @param string|false $needle - response key
+         * @return string|array 
+         * @throws \ErrorException
+         * @static 
+         */        public static function get($needle = false)
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->get($needle);
+        }
+                    /**
+         * Get response value by key
+         *
+         * @param string|bool $needle - retrieves response parameter using "dot" notation
+         * @return array 
+         * @throws \ErrorException
+         * @static 
+         */        public static function getResponseByKey($needle = false)
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->getResponseByKey($needle);
+        }
+                    /**
+         * Get response status
+         *
+         * @return mixed 
+         * @throws \ErrorException
+         * @static 
+         */        public static function getStatus()
+        {            //Method inherited from \GoogleMaps\WebService         
+                        /** @var \GoogleMaps\GoogleMaps $instance */
+                        return $instance->getStatus();
+        }
+            }
+    }
+
 namespace Barryvdh\Debugbar\Facades {
             /**
      * 
@@ -20613,6 +20734,60 @@ namespace  {
                                 return $instance->orWhereFullText($columns, $value, $options);
             }
                             /**
+             * Add a "where" clause to the query for multiple columns with "and" conditions between them.
+             *
+             * @param string[] $columns
+             * @param mixed $operator
+             * @param mixed $value
+             * @param string $boolean
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */            public static function whereAll($columns, $operator = null, $value = null, $boolean = 'and')
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->whereAll($columns, $operator, $value, $boolean);
+            }
+                            /**
+             * Add an "or where" clause to the query for multiple columns with "and" conditions between them.
+             *
+             * @param string[] $columns
+             * @param string $operator
+             * @param mixed $value
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */            public static function orWhereAll($columns, $operator = null, $value = null)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->orWhereAll($columns, $operator, $value);
+            }
+                            /**
+             * Add an "where" clause to the query for multiple columns with "or" conditions between them.
+             *
+             * @param string[] $columns
+             * @param string $operator
+             * @param mixed $value
+             * @param string $boolean
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */            public static function whereAny($columns, $operator = null, $value = null, $boolean = 'and')
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->whereAny($columns, $operator, $value, $boolean);
+            }
+                            /**
+             * Add an "or where" clause to the query for multiple columns with "or" conditions between them.
+             *
+             * @param string[] $columns
+             * @param string $operator
+             * @param mixed $value
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */            public static function orWhereAny($columns, $operator = null, $value = null)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->orWhereAny($columns, $operator, $value);
+            }
+                            /**
              * Add a "group by" clause to the query.
              *
              * @param array|\Illuminate\Contracts\Database\Query\Expression|string $groups
@@ -21567,6 +21742,7 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class GoogleMaps extends \GoogleMaps\Facade\GoogleMapsFacade {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
     }
