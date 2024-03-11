@@ -57,7 +57,11 @@
             </div>
         </div>
     </div>
-    <script >
-
-    </script>
+    <script>
+        window.onload = function() {
+          var today = new Date().toISOString().split('T')[0];
+          document.getElementById("date_delivrance").setAttribute("max", today);
+          document.getElementById("date_expiration").setAttribute("min", today);
+        };
+      </script>
 @endsection

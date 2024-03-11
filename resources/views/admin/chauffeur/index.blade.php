@@ -44,9 +44,9 @@
                         <td>{{ $user->chauffeurs?->date_expiration }}</td>
                         <td>{{ $user->chauffeurs?->annee_experience }}</td>
                         <td>
-                            <a href="{{ route("admin.chauffeur.edit", $user) }}"
+                            <a href="{{ route("admin.chauffeur.edit", $user->chauffeurs) }}"
                                class="btn btn-primary"><i class="ti ti-pencil"> </i></a>
-                            <form action="{{ route("admin.chauffeur.destroy", $user) }}" method="post"
+                            <form action="{{ route("admin.chauffeur.destroy", $user->chauffeurs) }}" method="post"
                                   class="needs-validation d-inline" novalidate>
                                 @csrf
                                 @method("DELETE")

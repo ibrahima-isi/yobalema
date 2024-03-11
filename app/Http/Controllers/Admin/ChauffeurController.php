@@ -101,19 +101,6 @@ class ChauffeurController extends Controller
         return to_route('admin.contrat.create', ['chauffeurs' => $chauffeurs ? $chauffeurs : new User()])
             -> with('success', 'Chauffeur créé avec succès');
     }
-
-//    public function store(ChauffeurFormRequest $request)
-//    {
-//        try {
-//            $chauffeur = new Chauffeur();
-//            $data = $this->setImage($chauffeur, $request);
-//            $chauffeur->fill($data)->save();
-//        } catch (\Exception $ex) {
-//            dd($ex);
-//        }
-//        return redirect()->route('admin.chauffeur.index')->with('success', 'Chauffeur ajouté avec succès');
-//    }
-
     /**
      * Display the specified resource.
      */
@@ -132,7 +119,6 @@ class ChauffeurController extends Controller
             'utilisateurs' => User::with('role_user')->get(),
             'categories' => $this->categories_permis,
         ]);
-
     }
 
     /**
@@ -141,7 +127,6 @@ class ChauffeurController extends Controller
     public function update(ChauffeurFormRequest $request, Chauffeur $chauffeur)
     {
         $chauffeur->update($request->validated());
-
         return to_route('admin.chauffeur.index')
             -> with('success', 'Role modifié avec succès');
     }
@@ -152,9 +137,8 @@ class ChauffeurController extends Controller
     public function destroy(Chauffeur $chauffeur)
     {
         $chauffeur->delete();
-
         return redirect()
             -> back()
-            -> with('success', 'Véhicule supprimer');
+            -> with('success', 'Véhicule supprimé');
     }
 }

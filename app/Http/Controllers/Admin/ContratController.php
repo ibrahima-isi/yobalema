@@ -96,7 +96,11 @@ class ContratController extends Controller
     public function edit(Contrat $contrat)
     {
         return view('admin.contrats.form',
-        compact('contrat')
+        [
+            'contrat' => $contrat,
+            'type_contrats' => $this->type_contrats,
+            'chauffeurs' => $this->getChauffeursId(),
+        ]
         );
     }
 
@@ -106,7 +110,10 @@ class ContratController extends Controller
     public function update(ContratFormRequest $request, Contrat $contrat)
     {
         $contrat->update($request->validated());
-        return to_route('admin.contrat.index')
+        $chauffeurs = $this->getChauffeursId();
+        return to_route('admin.contrat.index', [
+            'chauffeurs' => $chauffeurs,
+        ])
             ->with('success', "Contrat mis a jour");
     }
 
