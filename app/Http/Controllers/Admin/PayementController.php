@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\PayementFormRequest;
+use Carbon\Carbon;
 use App\Models\Location;
 use App\Models\Payement;
-use Carbon\Carbon;
+use App\Models\Vehicule;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\PayementFormRequest;
 
 class PayementController extends Controller
 {
@@ -52,8 +53,11 @@ class PayementController extends Controller
 
         Payement::create($payer);
 
+        $vehicule = Vehicule::find($location->vehicule_id);
+        $vehicule->update(['km_actuel' => $vehicule->km_actuel + $distance]);
+
         return to_route('location.client')
-            -> with('success', 'Payement effectué avec succès');
+            ->with('success', 'Payement effectué avec succès');
     }
 
     /**
@@ -61,7 +65,7 @@ class PayementController extends Controller
      */
     public function show(Payement $payement)
     {
-        return view('admin.payement.show', compact('payement') );
+        return view('admin.payement.show', compact('payement'));
     }
 
     /**
@@ -69,9 +73,10 @@ class PayementController extends Controller
      */
     public function edit(Payement $payement)
     {
-        return view('admin.payement.form',
-            compact('payement'));
-
+        return view(
+            'admin.payement.form',
+            compact('payement')
+        );
     }
 
     /**
@@ -82,7 +87,7 @@ class PayementController extends Controller
         $chauffeur->update($request->validated());
 
         return to_route('admin.payement.index')
-            -> with('success', 'Payement modifié avec succès');
+            ->with('success', 'Payement modifié avec succès');
     }
 
     /**
@@ -93,7 +98,7 @@ class PayementController extends Controller
         $payement->delete();
 
         return redirect()
-            -> back()
-            -> with('success', 'Véhicule supprimer');
+            ->back()
+            ->with('success', 'Véhicule supprimer');
     }
 }

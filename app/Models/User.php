@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function locations():  HasMany
     {
-        return $this->hasMany(Location::class);
+        return $this->hasMany(Location::class, 'client_id','id');
     }
 
 

@@ -134,7 +134,7 @@ class LocationController extends Controller
         Location::create($location);
         $vehicule->update(['statut' => 'EN LOCATION']);
 
-        return to_route('admin.location.index')
+        return to_route('location.client')
             ->with('success', 'location Créé avec success');
     }
 

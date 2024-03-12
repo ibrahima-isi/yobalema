@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('role_user')
-            -> paginate(15);
+            ->paginate(15);
         return view('admin.user.index', compact('users'));
     }
 
@@ -24,17 +24,22 @@ class UserController extends Controller
      */
     public function create()
     {
-        $datas = RoleUser::all();
 
-        $roles = array();
-        foreach ($datas as $data)
-        {
-            $roles[$data->name] = $data->id;
-        }
         return view('admin.user.form', [
             'user' => new User(),
-            'roles' => $roles,
+            'roles' => $this->setRoleArray(),
         ]);
+    }
+
+    private function setRoleArray()
+    {
+        $datas = RoleUser::all();
+        $roles = array();
+        foreach ($datas as $data) {
+            $roles[$data->name] = $data->id;
+        }
+
+        return $roles;
     }
 
     /**
@@ -45,7 +50,7 @@ class UserController extends Controller
         User::create($request->validated());
 
         return to_route('admin.user.index')
-            -> with('success', 'Utilisateur modifié avec succès');
+            ->with('success', 'Utilisateur modifié avec succès');
     }
 
     /**
@@ -61,7 +66,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.form', compact('user'));
+        $roles = $this->setRoleArray();
+        return view('admin.user.form', compact('user', 'roles'));
     }
 
     /**
@@ -82,7 +88,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect() -> back()
-            -> with('success', "Utilisateur supprimer avec succès");
+        return redirect()->back()
+            ->with('success', "Utilisateur supprimer avec succès");
     }
 }

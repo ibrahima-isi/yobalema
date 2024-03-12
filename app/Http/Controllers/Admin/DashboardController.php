@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use App\Models\Payement;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 
 class DashboardController extends Controller
@@ -15,6 +17,23 @@ class DashboardController extends Controller
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('admin.dashboard');
+        $chauffeurs = [];
+        $users = User::with('chauffeurs.vehicule', 'contrats')
+            -> where('role_user_id', '=',3)
+            -> limit(10)->get();
+        foreach ($users as $user){
+            if($user->chauffeurs?->num_permis != null){
+                $chauffeurs[] = $user;
+            }
+        }
+
+        $clients = User::where('role_user_id', '=', 2)
+            ->orderBy('created_at', 'desc') -> get();
+
+        $payements = Payement::all();
+
+        return view('admin.dashboard',
+         compact('chauffeurs', 'clients', 'payements')
+        );
     }
 }

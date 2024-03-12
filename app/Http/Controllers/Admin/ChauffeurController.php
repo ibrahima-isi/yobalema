@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ChauffeurFormRequest;
-use App\Models\Chauffeur;
-use App\Models\Location;
 use App\Models\Note;
 use App\Models\User;
+use App\Models\Location;
+use App\Models\Vehicule;
+use App\Models\Chauffeur;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ChauffeurFormRequest;
 
 
 class ChauffeurController extends Controller
@@ -26,26 +27,23 @@ class ChauffeurController extends Controller
         'categorie F' => 'F'
     ];
 
-    private function setImage(Chauffeur $chauffeur, ChauffeurFormRequest $request) {
+    private function setImage(Chauffeur $chauffeur, ChauffeurFormRequest $request)
+    {
 
         $data = $request->validated();
         $data['is_permis_valide'] = true;
         /* @var UploadedFile|null $image */
         $image = $request->validated('image');
 
-        if ( $image == null || $image->getError() ){
+        if ($image == null || $image->getError()) {
             return $data;
-        }
-        else
-        {
+        } else {
 
-            if ($chauffeur->image)
-            {
+            if ($chauffeur->image) {
                 Storage::disk('public')->delete($chauffeur->image);
             }
 
             $data['image'] = $image->store('chauffeur', 'public');
-
         }
 
         return $data;
@@ -57,13 +55,69 @@ class ChauffeurController extends Controller
     {
         $chauffeurs = [];
         $users = User::with('chauffeurs')
-            -> where('role_user_id', '=',3)->get();
-        foreach ($users as $user){
-            if($user->chauffeurs?->num_permis != null){
+            ->where('role_user_id', '=', 3)->get();
+        foreach ($users as $user) {
+            if ($user->chauffeurs?->num_permis != null) {
                 $chauffeurs[] = $user;
             }
         }
         return view('admin.chauffeur.index', ['users' => $chauffeurs,]);
+    }
+
+
+    public function addVehicule(Chauffeur $chauffeur)
+    {
+        $error = '';
+        if ($chauffeur->is_permis_valide) {
+
+            if ($chauffeur->categorie == 'B') {
+                $vehicule = Vehicule::where('categorie', '=', 'VOITURE')
+                    ->whereNull('chauffeur_id')
+                    ->where('statut', '=', 'DISPONIBLE')
+                    ->first();
+
+                if ($vehicule == null) {
+                    $error = 'Aucune Voiture disponible pour l\'instant';
+                } else {
+                    $chauffeur->update(['vehicule_id' => $vehicule->id]);
+                    $vehicule->update(['chauffeur_id' => $chauffeur->id]);
+                }
+            } elseif ($chauffeur->categorie == 'C') {
+                $vehicule = Vehicule::where('categorie', '=', 'CAMION')
+                    ->where('statut', '=', 'DISPONIBLE')
+                    ->whereNull('chauffeur_id')
+                    ->first();
+
+                if ($vehicule == null) {
+                    $error = 'Aucun Camion disponible pour l\'instant';
+                } else {
+                    $chauffeur->update(['vehicule_id' => $vehicule->id]);
+                    $vehicule->update(['chauffeur_id' => $chauffeur->id]);
+                }
+            } else {
+                $vehicule = Vehicule::where('categorie', '=', 'BUS')
+                    ->where('statut', '=', 'DISPONIBLE')
+                    ->whereNull('chauffeur_id')
+                    ->first();
+
+                if ($vehicule == null) {
+                    $error = 'Aucun BUS disponible pour l\'instant';
+                } else {
+                    $chauffeur->update(['vehicule_id' => $vehicule->id]);
+                    $vehicule->update(['chauffeur_id' => $chauffeur->id]);
+                }
+            }
+        } else {
+            $error = 'Desole Votre permis n\'est plus valide';
+        }
+
+        if ($error == '') {
+            return to_route('admin.chauffeur.index')
+                ->with('success', 'Unvehicule vous ete assigne');
+        } else {
+            return redirect()->back()
+                ->with('error', $error);
+        }
     }
 
     /**
@@ -76,7 +130,6 @@ class ChauffeurController extends Controller
             'utilisateurs' => User::with('role_user')->get(),
             'categories' => $this->categories_permis,
         ]);
-
     }
 
     /**
@@ -89,20 +142,20 @@ class ChauffeurController extends Controller
             $data = $this->setImage(new Chauffeur(), $request);
             Chauffeur::create($data);
             $chauffeur = Chauffeur::latest()->first();
-            if($chauffeur){
+            if ($chauffeur) {
                 $users = User::with('chauffeurs')
-                    -> where('role_user_id', '=',3)->get();
-                foreach ($users as $user){
-                    if($user->chauffeurs?->num_permis != null){
+                    ->where('role_user_id', '=', 3)->get();
+                foreach ($users as $user) {
+                    if ($user->chauffeurs?->num_permis != null) {
                         $chauffeurs[] = $user;
                     }
                 }
             }
-        }catch (\Exception $ex) {
+        } catch (\Exception $ex) {
             dd($ex);
         }
         return to_route('admin.contrat.create', ['chauffeurs' => $chauffeurs ? $chauffeurs : new User()])
-            -> with('success', 'Chauffeur créé avec succès');
+            ->with('success', 'Chauffeur créé avec succès');
     }
     /**
      * Display the specified resource.
@@ -115,7 +168,7 @@ class ChauffeurController extends Controller
     public function noter(Request $request)
     {
         $validation = $request->validate([
-            'note'=> 'required|integer',
+            'note' => 'required|integer',
             'location_id' => 'required|integer',
         ]);
 
@@ -148,7 +201,7 @@ class ChauffeurController extends Controller
     {
         $chauffeur->update($request->validated());
         return to_route('admin.chauffeur.index')
-            -> with('success', 'Role modifié avec succès');
+            ->with('success', 'Role modifié avec succès');
     }
 
     /**
@@ -158,7 +211,7 @@ class ChauffeurController extends Controller
     {
         $chauffeur->delete();
         return redirect()
-            -> back()
-            -> with('success', 'Véhicule supprimé');
+            ->back()
+            ->with('success', 'Véhicule supprimé');
     }
 }

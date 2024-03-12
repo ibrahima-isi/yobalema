@@ -53,6 +53,9 @@ Route::prefix('admin') -> name("admin.")
         Route::resource('client', ClientController::class);
         Route::resource('payement', \App\Http\Controllers\Admin\PayementController::class)
         ->except('show', 'edit', 'create');
+
+        Route::post('/assinge/{chauffeur}',[ChauffeurController::class, 'addVehicule'])
+        ->name('chauffeur.addVehicule');
 });
 
 Route::post('/noter', [ChauffeurController::class, 'noter'])

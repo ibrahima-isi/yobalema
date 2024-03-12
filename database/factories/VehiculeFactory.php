@@ -19,12 +19,12 @@ class VehiculeFactory extends Factory
     public function definition(): array
     {
         return [
-            'matricule' => $this->faker->unique()->word,
+            'matricule' => strtoupper($this->faker->unique()->word),
             'image_vehicule' => $this->faker->imageUrl(),
             'date_achat' => $this->faker->date,
             'km_defaut' => $this->faker->numberBetween(0, 10000),
             'km_actuel' => $this->faker->numberBetween(1000, 50000),
-            'statut' => $this->faker->randomElement(['DISPONIBLE', 'PANNE', 'EN LOCATION']),
+            'statut' => 'DISPONIBLE',
             'categorie' => $this->faker->randomElement(['CAMION', 'VOITURE', 'CITERNE', 'BUS']),
         ];
     }
