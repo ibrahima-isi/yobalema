@@ -113,7 +113,7 @@ class ChauffeurController extends Controller
 
         if ($error == '') {
             return to_route('admin.chauffeur.index')
-                ->with('success', 'Unvehicule vous ete assigne');
+                ->with('success', 'Un vehicule vous ete assigne');
         } else {
             return redirect()->back()
                 ->with('error', $error);
