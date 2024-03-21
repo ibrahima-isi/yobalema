@@ -22,7 +22,6 @@ class VehiculeFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        // TODO: completer les regles de validation
         return [
             'matricule' => ['string', 'required', Rule::unique('vehicules')->ignore($this->vehicule)],
             'date_achat' => ['string', 'required'],
