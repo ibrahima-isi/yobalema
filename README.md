@@ -1,3 +1,17 @@
+# yobalema
+Yobalema is a school project, which help manage an agency of a car renting in Senegal
+
+# Main Step
+- [x] Authentication and Permission
+- [x] Rent cars
+- [x] Payment
+- [x] API integration (to calculate the distance)
+- [x] Database Design
+- [ ] Paytech integration
+- [ ] 2 Side views
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
