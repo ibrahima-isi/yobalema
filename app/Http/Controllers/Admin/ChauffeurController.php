@@ -179,7 +179,7 @@ class ChauffeurController extends Controller
         Note::create($validation);
 
         return to_route('location.client')
-            ->with('success', 'Chauffeur note');
+            ->with('success', 'Chauffeur noté avec succès');
     }
 
     /**

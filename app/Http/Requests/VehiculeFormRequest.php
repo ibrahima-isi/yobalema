@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class VehiculeFormRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class VehiculeFormRequest extends FormRequest
     {
         // TODO: completer les regles de validation
         return [
-            'matricule' => ['string', 'required'],
+            'matricule' => ['string', 'required', Rule::unique('vehicules')->ignore($this->vehicule)],
             'date_achat' => ['string', 'required'],
             'km_defaut' => ['integer', 'required'],
             'statut' => ['required', 'string'],
