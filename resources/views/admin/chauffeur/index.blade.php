@@ -15,14 +15,14 @@
                         <th>#</th>
                         <th scope="col">Profile</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">Email</th>
+                        {{-- <th scope="col">Email</th> --}}
                         <th scope="col">Telephone</th>
-                        <th scope="col">Adresse</th>
+                        {{-- <th scope="col">Adresse</th> --}}
                         <th scope="col">Numéro de Permis</th>
                         <th scope="col">Catégorie</th>
-                        <th scope="col">Date Délivrance</th>
+                        {{-- <th scope="col">Date Délivrance</th> --}}
                         <th scope="col">Date Expiration</th>
-                        <th scope="col">Annee Expérience</th>
+                        {{-- <th scope="col">Annee Expérience</th> --}}
                         <th scope="col">Vehicule</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -36,14 +36,14 @@
                                 alt="Chauffeur Avatar" width="100" height="100">
                         </td>
                         <td>{{ $user->nom }}</td>
-                        <td>{{ $user->email }}</td>
+                        {{-- <td>{{ $user->email }}</td> --}}
                         <td>{{ $user->telephone }}</td>
-                        <td>{{ $user->adresse }}</td>
+                        {{-- <td>{{ $user->adresse }}</td> --}}
                         <td>{{ $user->chauffeurs?->num_permis }}</td>
                         <td>{{ $user->chauffeurs?->categorie }}</td>
                         <td>{{ $user->chauffeurs?->date_delivrance }}</td>
-                        <td>{{ $user->chauffeurs?->date_expiration }}</td>
-                        <td>{{ $user->chauffeurs?->annee_experience }}</td>
+                        {{-- <td>{{ $user->chauffeurs?->date_expiration }}</td> --}}
+                        {{-- <td>{{ $user->chauffeurs?->annee_experience }}</td> --}}
                         <td>{{ $user->chauffeurs?->vehicule?->matricule ?? "PAs de vehicule attribue" }}</td>
                         <td>
                             <form action="{{ route("admin.chauffeur.addVehicule", $user->chauffeurs) }}" method="post"
